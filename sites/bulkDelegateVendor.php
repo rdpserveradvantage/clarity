@@ -248,7 +248,7 @@ if ($assignedLho) {
                                 if (mysqli_query($con, $update)) {
                                     echo 'ATMID : ' . $atmid . ' Delegated to ' . $vendorName . '<br />';
                                     loggingRecords('sites', $siteid, 'log_after');
-                                    delegateToVendor($siteid, $atmid, '');
+                                    delegateToVendor($siteid, $atmid, '',$vendorName);
                                 }
 
                             }

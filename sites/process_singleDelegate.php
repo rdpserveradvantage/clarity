@@ -46,7 +46,7 @@ foreach ($siteidar as $siteidarkey => $siteid) {
     values('" . $lhoid . "','" . $lho . "','" . $siteid . "','" . $atmid[$i] . "',1,'" . $datetime . "','" . $userid . "','Advantage')";
         mysqli_query($con, $updatesql2);
         loggingRecords('sites', $siteid, 'log_after');
-        delegateToVendor($siteid, $atmid[$i], '');
+        delegateToVendor($siteid, $atmid[$i], '',$vendorName);
         addNotification('Advantage', $userid, $vendor, ' 1 New Site Delegated ! ', $siteid, $atmid[$i]);
         $delegationStatus['success'] = true;
 

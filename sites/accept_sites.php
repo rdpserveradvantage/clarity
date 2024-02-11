@@ -44,6 +44,9 @@
                 echo $atmid . ' Accepted Successfully ! <br />';
 
 
+                vendorSiteAcceptance($siteid, $atmid, '',$delegatedToVendorName);
+
+
             } else {
                 echo $atmid . ' Acceptance Error !<br />';
             }

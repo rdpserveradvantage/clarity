@@ -88,8 +88,8 @@
         ?>
 
         <h3>Feasibility Check</h3>
-        
-        
+
+
         <form id="feasibilityForm" action="./process_feasibilitycheck.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="userid" value="<? echo $userid; ?>" />
 
@@ -99,7 +99,7 @@
                     <div class="row" style="display:none;">
                         <div class="col-sm-6">
                             <label>Number of ATM Available</label>
-                            <select class="form-control" name="noOfAtm" id="noOfAtm" required >
+                            <select class="form-control" name="noOfAtm" id="noOfAtm" required>
                                 <option value="">Select</option>
                                 <option selected>1</option>
                                 <option>2</option>
@@ -112,29 +112,33 @@
                             <label>ATMID 1</label>
                             <input type="text" id="ATMID1" name="ATMID1" class="form-control" value="<? echo $atmid; ?>" <? if ($atmid) {
                                    echo 'readonly';
-                               } ?> /> 
-                               
-                       </div>
-                                            <div class="col-sm-3">
+                               } ?> />
+
+                        </div>
+                        <div class="col-sm-3">
                             <label>ATMID1 Snap</label>
-                            
-                                   <input type="file" name="ATMID1Snap" required />
+                            <input type="file" name="ATMID1Snap[]" multiple accept="image/jpeg, image/jpg, image/png"
+                                onchange="checkFileCount(this)" required />
                         </div>
                     </div>
-                    
-                    <div class="row">
-                    
+
+                    <!-- <div class="row">
+
                         <div class="col-sm-3 atmid2Section" style="display:none;">
                             <label for="ATMID2" id="atmId2Label">ATMID 2</label>
                             <input type="text" name="ATMID2" class="form-control" value="<? echo $atmid2; ?>" />
-                            ATMID2 Snap &nbsp; <input type="file" name="ATMID2Snap" />
+                            ATMID2 Snap &nbsp;
+                            
                         </div>
                         <div class="col-sm-3 atmid3Section" style="display:none;">
                             <label for="ATMID3" id="atmId3Label" style="display: none;">ATMID 3</label>
                             <input type="text" name="ATMID3" class="form-control" value="<? echo $atmid3; ?>" />
-                            ATMID3 Snap &nbsp; <input type="file" name="ATMID3Snap" />
+                            ATMID3 Snap &nbsp;
+                            <input type="file" name="ATMID3Snap[]" multiple accept="image/jpeg, image/jpg, image/png"
+                                onchange="checkFileCount(this)" required />
+
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="row">
                         <div class="col-sm-3">
@@ -175,7 +179,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <label id="atm1StatusLabel" >ATMID 1 Working</label>
+                            <label id="atm1StatusLabel">ATMID 1 Working</label>
                             <select class="form-control" name="atm1Status">
                                 <option value="">Select</option>
                                 <option>Yes</option>
@@ -227,7 +231,9 @@
                         </div>
                         <div class="col-sm-2">
                             <label>Snapshot</label>
-                            <input name="backroomNetworkSnap" type="file" required />
+                            <input type="file" name="backroomNetworkSnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" required />
+
                         </div>
 
                         <h6 class="col-sm-3"></h6>
@@ -251,7 +257,9 @@
                         </div>
                         <div class="col-sm-2">
                             <label>Snapshot</label>
-                            <input name="backroomNetworkSnap2" type="file" />
+                            <input type="file" name="backroomNetworkSnap2[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" required />
+
                         </div>
                     </div>
                 </div>
@@ -346,7 +354,9 @@
                             </select>
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" name="routerPositionSnap" required />
+                            <input type="file" name="routerPositionSnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" required />
+
                         </div>
                     </div>
 
@@ -365,7 +375,9 @@
                             </select>
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" name="routerAntenaSnap" required />
+                            <input type="file" name="routerAntenaSnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" required />
+
                         </div>
                     </div>
 
@@ -378,7 +390,9 @@
                             <input type="text" name="AntennaRoutingdetail" class="form-control" required />
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" name="AntennaRoutingSnap" required />
+                            <input type="file" name="AntennaRoutingSnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" required />
+
                         </div>
                     </div>
 
@@ -413,7 +427,9 @@
                                 <h6>UPS Snap</h6>
                             </div>
                             <div class="col-sm-3">
-                                <input type="file" name="UPSAvailableSnap" />
+                                <input type="file" name="UPSAvailableSnap[]" multiple
+                                    accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" />
+
                             </div>
                         </div>
 
@@ -430,7 +446,9 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                <input type="file" name="NoOfUpsSnap" />
+                                <input type="file" name="NoOfUpsSnap[]" multiple
+                                    accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" />
+
                             </div>
                         </div>
 
@@ -460,7 +478,9 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                <input type="file" name="upsWorkingSnap" />
+                                <input type="file" name="upsWorkingSnap[]" multiple
+                                    accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" />
+
                             </div>
                         </div>
 
@@ -534,7 +554,9 @@
                             </select>
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" name="powerSocketAvailabilitySnap" />
+                            <input type="file" name="powerSocketAvailabilitySnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" />
+
                         </div>
                     </div>
 
@@ -550,7 +572,9 @@
                             </select>
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" name="powerSocketAvailabilityUPSSnap" required />
+                            <input type="file" name="powerSocketAvailabilityUPSSnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" required />
+
                         </div>
                     </div>
 
@@ -572,7 +596,9 @@
                                 placeholder="EN Vtg ... " required />
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" name="earthingSnap" required />
+                            <input type="file" name="earthingSnap[]" multiple accept="image/jpeg, image/jpg, image/png"
+                                onchange="checkFileCount(this)" required />
+
                         </div>
                     </div>
 
@@ -581,17 +607,22 @@
                             <h6>Power Fluctuation</h6>
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" name="powerFluctuationPE" placeholder="PE vtg.." required />
+                            <input type="text" class="form-control" name="powerFluctuationPE" placeholder="PE vtg.."
+                                required />
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" name="powerFluctuationPN" placeholder="PN vtg.." required />
+                            <input type="text" class="form-control" name="powerFluctuationPN" placeholder="PN vtg.."
+                                required />
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" name="powerFluctuationEN" placeholder="EN vtg.." required />
+                            <input type="text" class="form-control" name="powerFluctuationEN" placeholder="EN vtg.."
+                                required />
                         </div>
 
                         <div class="col-sm-3">
-                            <input type="file" name="powerFluctuationSnap" required />
+                            <input type="file" name="powerFluctuationSnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" required />
+
                         </div>
                     </div>
 
@@ -644,7 +675,9 @@
                                 placeholder="Remarks ... " />
                         </div>
                         <div class="col-sm-3" id="backroomSnapContainer" style="display: none;">
-                            <input type="file" name="backroomDisturbingMaterialSnap" />
+                            <input type="file" name="backroomDisturbingMaterialSnap[]" multiple
+                                accept="image/jpeg, image/jpg, image/png" onchange="checkFileCount(this)" />
+
                         </div>
                     </div>
 
@@ -673,7 +706,9 @@
                             <input type="text" name="Remarks" class="form-control" placeholder="Remarks ... " />
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" name="remarksSnap" />
+                            <input type="file" name="remarksSnap[]" multiple accept="image/jpeg, image/jpg, image/png"
+                                onchange="checkFileCount(this)" />
+
                         </div>
                     </div>
 
@@ -696,7 +731,9 @@
             <br />
             <div class="row">
                 <div class="col-sm-12">
-                    <button type="submit" id="submitButton" class="btn btn-success" onclick="saveForm()">Save</button>
+                <button type="submit" id="submitButton" class="btn btn-success">Save</button>
+
+                    <!-- <button type="submit" id="submitButton" class="btn btn-success" onclick="saveForm()">Save</button> -->
                     <div id="loadingIndicator" style="display: none;">Please Wait ...</div>
                     <!--<input type="submit" name="submit" class="btn btn-success" />-->
                 </div>
@@ -812,9 +849,9 @@
                             } else if (response.code === 300) {
                                 populateFormFields(response);
                                 Swal.fire({
-                                  icon: "error",
-                                  title: "Oops...",
-                                  text: "ATMID Not found!"
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "ATMID Not found!"
                                 });
 
                             }
@@ -965,6 +1002,14 @@
         //         },
         //     });
         // }
+
+        function checkFileCount(input) {
+            if (input.files.length > 5) {
+                alert("Maximum 5 images are allowed.");
+                input.value = ''; // Clear the file input to remove the selected files
+            }
+        }
+
     </script>
 
 

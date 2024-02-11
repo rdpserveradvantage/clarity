@@ -17,17 +17,18 @@ if(isset($redelegate) && !empty($redelegate)){
     }
     $statement = "insert into delegation(siteid,engineerId,status,created_at,vendorId,vendorName,isVendor,created_by,atmid) 
         values('".$siteid."','".$engineer."',1,'".$datetime."','".$RailTailVendorID."','".$RailTailVendorName."',1,'".$userid."','".$atmid."')";
-        
+        $engName = getUsername($engineer);
         if(mysqli_query($con,$statement)){
             
               mysqli_query($con,"insert into vendorSitesDelegation(vendorid,vendorName,siteid,amtid,status,created_at,created_by,portal) 
                     values('".$vendor."','".$vendorName."','".$siteid."','".$atmid."',1,'".$datetime."','".$userid."','Vendor')");
                     echo 202;
-            delegateToEngineer($siteid,$atmid,'');
+            delegateToEngineer($siteid,$atmid,'',$engName);
         }  
     }else{
         $statement = "insert into delegation(siteid,engineerId,status,created_at,vendorId,vendorName,isVendor,created_by,atmid) 
         values('".$siteid."','".$engineer."',1,'".$datetime."','".$RailTailVendorID."','".$RailTailVendorName."',1,'".$userid."','".$atmid."')";
+        $engName = getUsername($engineer);
         
         if(mysqli_query($con,$statement)){
     
@@ -36,7 +37,8 @@ if(isset($redelegate) && !empty($redelegate)){
             mysqli_query($con,"insert into vendorSitesDelegation(vendorid,vendorName,siteid,amtid,status,created_at,created_by,portal) 
                     values('".$vendor."','".$vendorName."','".$siteid."','".$atmid."',1,'".$datetime."','".$userid."','Vendor')");
             echo json_encode(200);
-            delegateToEngineer($siteid,$atmid,'');
+            delegateToEngineer($siteid,$atmid,'',$engName);
+            
         }
     }
 

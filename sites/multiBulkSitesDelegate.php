@@ -46,7 +46,7 @@ if (count($atmid_ar) > 0) {
                 if (mysqli_query($con, $updatesql2)) {
                     echo 'ATMID : ' . $atmidvalue . ' Delegated to ' . $vendorName . '<br />';
                     loggingRecords('sites', $siteid, 'log_after');
-                    delegateToVendor($siteid, $atmidvalue, '');
+                    delegateToVendor($siteid, $atmidvalue, '',$vendorName);
                 }
 
             }

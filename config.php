@@ -248,9 +248,14 @@ function confurationDone($siteId, $atmid, $table)
     logEvent($siteId, $atmid, 'Advantage', 'Cofigured', 'Configuration Done', $table);
 }
 
-function delegateToVendor($siteId, $atmid, $table)
+function delegateToVendor($siteId, $atmid, $table,$vendorName)
 {
-    logEvent($siteId, $atmid, 'Advantage', 'Sites Delegated To Vendor', 'Sites delegated to vendor for processing', $table);
+    logEvent($siteId, $atmid, 'Advantage', 'Sites Delegated To Contractor - ' . $vendorName, 'Sites delegated to Contractor for processing', $table);
+}
+
+function vendorSiteAcceptance($siteId, $atmid, $table,$vendorName)
+{
+    logEvent($siteId, $atmid, 'Advantage', $vendorName . ' - Accept Site ', 'Acceptance from Contractor', $table);
 }
 
 function reopenRedelegateToVendor($siteId, $atmid, $table)
@@ -445,9 +450,9 @@ function delegateToProjectExecutive($siteId, $atmid, $table)
     logEvent($siteId, $atmid, 'Vendor', 'Sites Delegated To Project Executive', 'Sites delegated to Project Executive', $table);
 }
 
-function delegateToEngineer($siteId, $atmid, $table)
+function delegateToEngineer($siteId, $atmid, $table,$engName)
 {
-    logEvent($siteId, $atmid, 'Vendor', 'Sites Delegated To Engineer', 'Sites delegated to Engineer for processing', $table);
+    logEvent($siteId, $atmid, 'Vendor', 'Sites Delegated To Engineer - ' . $engName, 'Sites delegated to Engineer for processing', $table);
 }
 
 
@@ -458,4 +463,73 @@ function projectTeamInstallation($siteId,$atmid,$table) {
 function projectTeamInstallationHold($siteId,$atmid,$table) {
     logEvent($siteId,$atmid, 'Project', 'Installation Hold', 'Installation Hold By Project Team Engineer',$table);
 }
+
+function compressImage($source, $destination, $quality) {
+    $info = getimagesize($source);
+
+    if ($info['mime'] == 'image/jpeg') 
+        $image = imagecreatefromjpeg($source);
+
+    elseif ($info['mime'] == 'image/png') 
+        $image = imagecreatefrompng($source);
+
+    imagejpeg($image, $destination, $quality);
+}
+
+// Function to handle file upload and compression
+function handlesingleUpload($file, $targetDir) {
+
+$randomnum = rand(4000, 90000);
+
+    $targetFile = $targetDir . $randomnum . '_'. basename($file["name"]);
+
+    // Check if file is an image
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($file["tmp_name"]);
+
+    if ($check !== false) {
+        // Attempt to move the uploaded file
+        if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+            // Compress image if size is more than 2MB
+            if ($file["size"] > 2000000) {
+                $compressedImage = $targetDir . "compressed_" . basename($file["name"]);
+                compressImage($targetFile, $compressedImage, 50); // Adjust compression quality as needed
+                unlink($targetFile); // Remove original file
+                return $compressedImage;
+            } else {
+                return $targetFile;
+            }
+        } else {
+            return false; // Failed to move the uploaded file
+        }
+    } else {
+        return false; // File is not an image
+    }
+}
+
+function handleUploads($files, $targetDir) {
+    $uploadedFiles = array();
+
+    foreach ($files['tmp_name'] as $key => $tmp_name) {
+        $file = array(
+            'name' => $files['name'][$key],
+            'size' => $files['size'][$key],
+            'tmp_name' => $files['tmp_name'][$key],
+            'type' => $files['type'][$key]
+        );
+
+        $result = handlesingleUpload($file, $targetDir);
+        if ($result) {
+            $uploadedFiles[] = $result;
+        } else {
+            echo "Error uploading file " . $file['name'] . "<br>";
+        }
+    }
+
+    return $uploadedFiles;
+}
+
+
 ?>

@@ -5,6 +5,11 @@ $atmid = $_REQUEST['atmid'];
 
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 
 
 
@@ -32,15 +37,18 @@ $atmid = $_REQUEST['atmid'];
                     <?php
 
 
+
+                    $atm_id = $_REQUEST['atmid'];
+                    $getsiteIdSql = mysqli_query($con, "select * from sites where atmid='" . $atm_id . "'");
+                    $getsiteIdSql_result = mysqli_fetch_assoc($getsiteIdSql);
+                    $siteid = $getsiteIdSql_result['id'];
+
+
                     if (isset($_POST['rejectsubmit'])) {
                         $status = 'Reject';
 
                         $feasibilityRemark = $_REQUEST['feasibilityRemark'];
                         $feasibiltyId = $_REQUEST['feasibiltyId'];
-                        $atm_id = $_REQUEST['atmid'];
-                        $getsiteIdSql = mysqli_query($con, "select * from sites where atmid='" . $atm_id . "'");
-                        $getsiteIdSql_result = mysqli_fetch_assoc($getsiteIdSql);
-                        $siteid = $getsiteIdSql_result['id'];
 
                         mysqli_query($con, "update sites set verificationStatus='" . $status . "' where id='" . $siteid . "'");
                         mysqli_query($con, "update feasibilityCheck set verificationStatus='" . $status . "' where id='" . $feasibiltyId . "'");
@@ -52,10 +60,6 @@ $atmid = $_REQUEST['atmid'];
                     } else if (isset($_POST['verifysubmit'])) {
                         $status = 'Verify';
                         $feasibiltyId = $_REQUEST['feasibiltyId'];
-                        $atm_id = $_REQUEST['atmid'];
-                        $getsiteIdSql = mysqli_query($con, "select * from sites where atmid='" . $atm_id . "'");
-                        $getsiteIdSql_result = mysqli_fetch_assoc($getsiteIdSql);
-                        $siteid = $getsiteIdSql_result['id'];
 
                         mysqli_query($con, "update sites set verificationStatus='" . $status . "' where id='" . $siteid . "'");
                         mysqli_query($con, "update feasibilityCheck set verificationStatus='" . $status . "', verificationBy='" . $userid . "',verificationByName='" . $username . "' where id='" . $feasibiltyId . "'");
@@ -299,17 +303,30 @@ $atmid = $_REQUEST['atmid'];
                                             </td>
                                         </tr>
 
-                                        
+
                                         <tr>
                                             <th>Backroom Network Snap 1</th>
                                             <td>
+
+                                                <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="ATMID1Snap">
+                                                    &nbsp; View Images
+                                                </button>
+
                                                 <?
-                                                $imageFileName = pathinfo($baseurl . $ATMID1Snap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $ATMID1Snap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
+                                                // $ATMID1Snap_ar = explode(',', $ATMID1Snap);
+                                                // foreach ($ATMID1Snap_ar as $ATMID1Snap_ar_key => $ATMID1Snap_ar_val) {
+
+                                                //     $imageFileName = pathinfo($baseurl . $ATMID1Snap_ar_val, PATHINFO_BASENAME);
+                                                //     if (isImageFile($imageFileName)) {
+                                                //         echo '<a href="' . $baseurl . $ATMID1Snap_ar_val . '" target="_blank">View</a>';
+                                                //     } else {
+                                                //         echo 'No Image Found';
+                                                //     }
+
+                                                // }
+
                                                 ?>
 
 
@@ -355,15 +372,13 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Backroom Network Snap 1</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $backroomNetworkSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $backroomNetworkSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
 
+                                            
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="backroomNetworkSnap">
+                                                    &nbsp; View Images
+                                                </button>
 
 
 
@@ -393,8 +408,13 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Backroom Network Snap 2</th>
                                             <td>
-                                                <a href="<?= $baseurl . $backroomNetworkSnap2; ?>" target="_blank">View
-                                                    Image</a>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="backroomNetworkSnap2">
+                                                    &nbsp; View Images
+                                                </button>
+
+                                                
                                             </td>
                                         </tr>
 
@@ -468,14 +488,15 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Place to fixe router Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $routerPositionSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $routerPositionSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                                
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="routerPositionSnap">
+                                                    &nbsp; View Images
+                                                </button>
+
+
+                                             
                                             </td>
                                         </tr>
 
@@ -489,14 +510,11 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Router Antena Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $routerAntenaSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $routerAntenaSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="routerAntenaSnap">
+                                                    &nbsp; View Images
+                                                </button>
 
 
                                             </td>
@@ -513,14 +531,13 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Antenna Routing Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $AntennaRoutingSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $AntennaRoutingSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="AntennaRoutingSnap">
+                                                    &nbsp; View Images
+                                                </button>
+
+                                                
                                             </td>
                                         </tr>
 
@@ -543,15 +560,11 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>U P S Available Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $UPSAvailableSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $UPSAvailableSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
-
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="UPSAvailableSnap">
+                                                    &nbsp; View Images
+                                                </button>
                                             </td>
                                         </tr>
 
@@ -565,14 +578,11 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>No Of Ups Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $NoOfUpsSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $NoOfUpsSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                                <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="NoOfUpsSnap">
+                                                    &nbsp; View Images
+                                                </button>
                                             </td>
                                         </tr>
 
@@ -597,14 +607,11 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>UPS Working Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $upsWorkingSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $upsWorkingSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="upsWorkingSnap">
+                                                    &nbsp; View Images
+                                                </button>
 
                                             </td>
                                         </tr>
@@ -633,14 +640,12 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Power Socket Availability Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $powerSocketAvailabilitySnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $powerSocketAvailabilitySnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="powerSocketAvailabilitySnap">
+                                                    &nbsp; View Images
+                                                </button>
+                                                
 
                                             </td>
                                         </tr>
@@ -654,8 +659,12 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Power Socket Available for Router in UPS Snap</th>
                                             <td>
-                                                <a href="<?= $baseurl . $powerSocketAvailabilityUPSSnap; ?>"
-                                                    target="_blank">View Image</a>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="powerSocketAvailabilityUPSSnap">
+                                                    &nbsp; View Images
+                                                </button>
+                                                
                                             </td>
                                         </tr>
 
@@ -678,14 +687,12 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Earthing Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $earthingSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $earthingSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="earthingSnap">
+                                                    &nbsp; View Images
+                                                </button>
+                                                
                                             </td>
                                         </tr>
 
@@ -712,14 +719,13 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Power Fluctuation Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $powerFluctuationSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $powerFluctuationSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="powerFluctuationSnap">
+                                                    &nbsp; View Images
+                                                </button>
+                                                
+                                                
                                             </td>
                                         </tr>
 
@@ -822,14 +828,12 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>Remarks Snap</th>
                                             <td>
-                                                <?
-                                                $imageFileName = pathinfo($baseurl . $remarksSnap, PATHINFO_BASENAME);
-                                                if (isImageFile($imageFileName)) {
-                                                    echo '<a href="' . $baseurl . $remarksSnap . '" target="_blank">View</a>';
-                                                } else {
-                                                    echo 'No Image Found';
-                                                }
-                                                ?>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="remarksSnap">
+                                                    &nbsp; View Images
+                                                </button>
+                                                
                                             </td>
                                         </tr>
                                         <tr>
@@ -869,7 +873,11 @@ $atmid = $_REQUEST['atmid'];
                                         <tr>
                                             <th>ATMID1 Snap</th>
                                             <td>
-                                                <a href="<?= $baseurl . $ATMID1Snap; ?>" target="_blank">View Image</a>
+                                            <button type="button" class="viewFeasibilityImage btn btn-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#viewFeasibilityImage-modal" 
+                                                    data-value="<?= $id; ?>" data-siteid="<?php echo $siteid; ?>" data-imagetype="ATMID1Snap">
+                                                    &nbsp; View Images
+                                                </button>
                                             </td>
                                         </tr>
 
@@ -940,4 +948,60 @@ $atmid = $_REQUEST['atmid'];
     </div>
 </div>
 
+
+
+<div class="modal fade" id="viewFeasibilityImage-modal" tabindex="-1" aria-labelledby="ModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-lg modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">View images </h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="feasibilityImagesShowModal">
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary save-esd-datetime">Save</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // feasibilityImagesShowModal
+
+    $('.viewFeasibilityImage').click(function (e) {
+        siteId = $(this).data('siteid');
+        id = $(this).data('value');
+        imageType = $(this).data('imagetype');
+
+        $('#feasibilityImagesShowModal').html('')
+
+        $.ajax({
+            url: 'viewFeasibilityImages.php',
+            type: 'POST',
+            data: {
+                'siteId': siteId,
+                'id': id,
+                'imagetype': imageType, // Specify the type as ASD
+                
+            },
+            success: function (response) {
+                
+                // $('#ModalLabel').html(response.label)
+
+                $('#feasibilityImagesShowModal').html(response)
+            }
+        });
+    });
+
+</script>
 <? include('../footer.php'); ?>

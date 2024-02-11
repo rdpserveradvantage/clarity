@@ -1,26 +1,26 @@
 <?
 // include('config.php');
 if ($_SESSION['ADVANTAGE_username']) {
-    
-    
-// ini_set('display_errors', 1);
+
+
+    // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-// echo '<pre>';
+    // echo '<pre>';
 // print_r($_SESSION);
 // echo '</pre>';
 
-// ;
+    // ;
 
 
     $id = $_SESSION['ADVANTAGE_userid'];
 
-    
+
     $user = "select * from user where userid=" . $id;
     $usersql = mysqli_query($con, $user);
     $usersql_result = mysqli_fetch_assoc($usersql);
-    
+
     $level = $usersql_result['level'];
     $permission = $usersql_result['permission'];
     $permission = explode(',', $permission);
@@ -45,7 +45,7 @@ if ($_SESSION['ADVANTAGE_username']) {
 
 
 
-    
+
 
     ?>
 
@@ -53,9 +53,9 @@ if ($_SESSION['ADVANTAGE_username']) {
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
             <a class="sidebar-brand brand-logo" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/index.php"
                 style="color:white;">
-                 <img src="http://clarity.advantagesb.com/assets/1601680170_capture.jpg" alt="logo" />
-             
-             
+                <img src="http://clarity.advantagesb.com/assets/1601680170_capture.jpg" alt="logo" />
+
+
             </a>
             <a class="sidebar-brand brand-logo-mini" href="index.php"><img src="assets/images/logo-mini.svg"
                     alt="logo" /></a>
@@ -116,6 +116,11 @@ if ($_SESSION['ADVANTAGE_username']) {
                     </div>
                 </div>
             </li> -->
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="#">
+                    <span class="menu-title" id="clock" class="clock"></span>
+                </a>
+            </li>
             <li class="nav-item nav-category">
                 <span class="nav-link">Navigation</span>
             </li>
@@ -176,6 +181,9 @@ if ($_SESSION['ADVANTAGE_username']) {
 
 
 
+
+
+
             <li class="nav-item menu-items">
                 <a class="nav-link" href="<?= $base_url; ?>/logout.php">
                     <span class="menu-icon">
@@ -190,3 +198,20 @@ if ($_SESSION['ADVANTAGE_username']) {
     </nav>
 
 <? } ?>
+
+<script>
+  function updateClock() {
+    var now = new Date();
+    var date = now.toDateString();
+    var time = now.toLocaleTimeString();
+
+    var clockElement = document.getElementById('clock');
+    clockElement.textContent = date + ' ' + time;
+  }
+
+  // Update the clock every second
+  setInterval(updateClock, 1000);
+
+  // Initial call to display the clock immediately
+  updateClock();
+</script>
