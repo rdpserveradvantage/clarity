@@ -57,9 +57,7 @@ if ($_SESSION['ADVANTAGE_username']) {
 
 
             </a>
-            <a class="sidebar-brand brand-logo-mini" href="index.php">
-                
-                </a>
+        <a class="sidebar-brand brand-logo-mini" href="index.php"><img src="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/images/railtellogo.png" alt="logo"></a>  
         </div>
 
 

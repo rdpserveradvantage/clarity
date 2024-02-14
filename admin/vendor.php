@@ -1,5 +1,6 @@
 <? include('../header.php'); ?>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
@@ -93,7 +94,7 @@
                                                 <tr class="table-primary">
                                                     <th>#</th>
                                                     <th>Contractor Name</th>
-                                                    <th>Action</th>
+                                                    <!-- <th>Action</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -106,7 +107,7 @@
                                                     <tr>
                                                         <td><?php echo $i; ?></td>
                                                         <td class="strong"><?php echo $sql_result['vendorName']; ?></td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <a href="#" class="btn btn-success createVendorUserLink" data-vendorid="<?php echo $id; ?>">Create Contractor User</a>
                                                             | 
                                                             <a class="btn btn-primary" href="viewVendorUser.php?vendor=<? echo $id; ?>">View Users</a>
@@ -116,7 +117,7 @@
                                                             <a href="viewVendor.php?id=<? echo $id; ?>" class="btn btn-success viewVendor" data-vendorid="<?php echo $id; ?>">View</a>
                                                             |
                                                             <a href="#" class="btn btn-danger" onclick="disable(<? echo $id; ?>)">Delete</a>
-                                                            </td>
+                                                            </td> -->
                                                         
                                                     </tr>
                                                 <?php $i++;

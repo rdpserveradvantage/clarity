@@ -14,14 +14,13 @@
                                                 <th>Password</th>
                                                 <th>Contact No.</th>
                                                 <th>Status</th>
-                                                <th>action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?
                                             $RailTailVendorID = $_REQUEST['vendor'];
                                             $i = 1;
-                                            echo "select * from user where vendorId='" . $RailTailVendorID . "'";
+                                            // echo "select * from user where vendorId='" . $RailTailVendorID . "'";
                                             $sql = mysqli_query($con, "select * from user where vendorId='" . $RailTailVendorID . "'");
                                             while ($sql_result = mysqli_fetch_assoc($sql)) {
                                                 $serviceExecutiveStatus = 0;
@@ -56,9 +55,7 @@
                                                     <td style="text-transform: initial;"><? echo $sql_result['password']; ?></td>
                                                     <td style="text-transform: initial;"><? echo $sql_result['contact']; ?></td>
                                                     <td class="<? echo $status_class; ?>"><? echo $user_status; ?></td>
-                                                    <td>
-                                                        <a class="btn btn-warning" href="vendorallotmenu_perm.php?id=<?= $sql_result['id']; ?>&level=<?= $level; ?>">Menu Permission</a>
-                                                    </td>
+                                                    
                                                 </tr>
                                             <? $i++;
                                             } ?>

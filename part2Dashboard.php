@@ -7,7 +7,7 @@
             <div class="card-body">
                 <div class="d-flex flex-row justify-content-between">
                     <h4 class="card-title mb-1">Installation Calls with Most Pending time</h4>
-                    
+
                     <p class="text-muted mb-1">Your data status</p>
                 </div>
                 <hr>
@@ -56,7 +56,7 @@
                                     <div class="preview-item border-bottom">
                                         <div class="preview-thumbnail">
                                             <div class="preview-icon bg-primary">
-                                                <i class="mdi mdi-file-document"></i>
+                                                <i class="mdi mdi-file-document" style="color: white;"></i>
                                             </div>
                                         </div>
                                         <div class="preview-item-content d-sm-flex flex-grow">

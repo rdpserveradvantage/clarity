@@ -23579,7 +23579,11 @@ code {
   }
 }
 
+.sidebar-icon-only .page-body-wrapper {
+    margin-left: 70px !important;
+  }
 @media (min-width: 992px) {
+  
   .border-left-lg {
     border-left: 1px solid #2c2e33;
   }
@@ -29613,7 +29617,7 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: #191c24;
+  /* background: #191c24; */
   width: 244px;
   height: 70px;
 }
@@ -29629,7 +29633,7 @@ div.tagsinput span.tag a {
   font-size: 1.5rem;
   line-height: 48px;
   margin-right: 0;
-  padding: 0rem 0rem 0rem 1.3rem;
+  padding: 0rem 0.7rem 0rem 0.7rem;
   width: 100%;
 }
 
@@ -29647,14 +29651,14 @@ div.tagsinput span.tag a {
   vertical-align: middle;
 }
 
-.navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
+/* .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
   display: none;
-}
+} */
 
 .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini img {
-  width: calc(70px - 50px);
+  width: 100%;
   max-width: 100%;
-  height: 28px;
+  height: 35px;
   margin: auto;
 }
 
@@ -29822,6 +29826,12 @@ div.tagsinput span.tag a {
 }
 
 @media (max-width: 767px) {
+  .only_mob{
+    display: block !important;
+  }
+  .not_mob{
+    display: none;
+  }
   .navbar .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
     margin-left: .8rem;
     margin-right: .8rem;
@@ -30017,9 +30027,9 @@ div.tagsinput span.tag a {
     display: none;
   }
 
-  .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
+  /* .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
     display: inline-block;
-  }
+  } */
 
   .navbar-collapse {
     display: flex;
@@ -30078,7 +30088,7 @@ div.tagsinput span.tag a {
   font-size: 1.5rem;
   line-height: 48px;
   margin-right: 0;
-  padding: 0rem 0rem 0rem 1.3rem;
+  padding: 0rem 0.7rem 0rem 0.7rem;
   width: 100%;
 }
 
@@ -30103,8 +30113,9 @@ div.tagsinput span.tag a {
 .sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini img {
   width: calc(70px - 50px);
   max-width: 100%;
-  height: 28px;
+  height: 35px;
   margin: auto;
+  width: 100%;
 }
 
 .sidebar .nav {
@@ -30901,5 +30912,22 @@ div.tagsinput span.tag a {
 }
 .bg-blue {
   background-color: #0073b7 !important;
+}
+
+/* .brand-logo-mini{
+  display: none;
+} */
+.brand-logo-mini img{
+  height: 35px;
+}
+.sidebar-icon-only
+.navbar-brand{
+  margin-right: 0;
+}
+.card-block{
+  overflow: scroll;
+}
+.text-right{
+  text-align: right;
 }
 /*# sourceMappingURL=maps/style.css.map */
