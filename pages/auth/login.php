@@ -4,12 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Corona Admin</title>
+  <title>Clarity | Login</title>
   <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
 
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+      <link rel="icon" href="http://clarity.advantagesb.com/assets/images/adv_fav.png" type="image/png">
+    <link rel="shortcut icon" href="http://clarity.advantagesb.com/assets/images/adv_fav.png" type="image/png">
+    
+    
+    
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

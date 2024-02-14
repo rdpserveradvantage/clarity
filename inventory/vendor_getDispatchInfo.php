@@ -8,7 +8,7 @@ if ($sqlResult = mysqli_fetch_assoc($sql)) {
     $portal = $sqlResult["portal"];
     
     
-    $url = 'http://clarity.advantagesb.com/corona/inventory/';
+    $url = 'http://clarity.advantagesb.com/inventory/';
         
     ?>
 

@@ -1,6 +1,6 @@
 <? include('../header.php'); 
 
-$baseurl = 'http://clarity.advantagesb.com/corona/eng/';
+$baseurl = 'http://clarity.advantagesb.com/eng/';
 ?>
 
 <style>

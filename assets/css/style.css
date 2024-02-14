@@ -1,3 +1,22 @@
+form .form-control {
+  /* border-bottom: 1px solid #d4d4d4 !important; */
+  /* color: white !important; */
+  font-weight: 600;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+
+.form-control:focus{
+  background-color: white !important;
+}
 .overflow_auto{
   overflow: auto;
 }
@@ -109,7 +128,7 @@ table {
 }
 
 .modal-content .form-control {
-  background-color: white;
+  /* background-color: white; */
   border-radius: 2px;
   color: black;
   border: 1px solid;
@@ -11754,7 +11773,7 @@ progress {
   font-weight: 400;
   line-height: 1;
   color: #212529;
-  background-color: #2A3038;
+  background-color: white;
   background-clip: padding-box;
   border: 1px solid #2c2e33;
   appearance: none;
@@ -11807,6 +11826,9 @@ progress {
   cursor: pointer;
 }
 
+select{
+  background: white !important;
+}
 .form-control:focus,
 .asColorPicker-input:focus,
 .dataTables_wrapper select:focus,
@@ -11818,7 +11840,7 @@ progress {
 .typeahead:focus,
 .tt-query:focus,
 .tt-hint:focus {
-  color: #ffffff;
+  color: black;
   background-color: #fff;
   border-color: #86b7fe;
   outline: 0;
@@ -15577,10 +15599,11 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #191c24;
+  background-color: white;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  color: black;
 }
 
 .card>hr {
@@ -23382,6 +23405,7 @@ html {
   overflow-x: hidden;
   padding-right: 0 !important;
   background-color: #191c24;
+  color: black;
 }
 
 *:-moz-full-screen,
@@ -24940,7 +24964,7 @@ code {
 }
 
 .card .card-title {
-  color: #ffffff;
+  /* color: #ffffff; */
   margin-bottom: 1.125rem;
   text-transform: capitalize;
 }
@@ -25428,9 +25452,9 @@ code {
   font-weight: normal;
   font-size: 0.875rem;
   padding: 0.625rem 0.6875rem;
-  background-color: #2A3038;
+  background-color: white;
   border-radius: 2px;
-  color: #ffffff;
+  color: black;
 }
 
 .form-control:focus,
@@ -25544,8 +25568,9 @@ select.typeahead,
 select.tt-query,
 select.tt-hint {
   padding: .4375rem .75rem;
-  border: 0;
-  color: #ffffff;
+  border: 1px solid;
+  color: black;
+
 }
 
 select.form-control:focus,
@@ -28813,11 +28838,11 @@ body.avgrund-active {
   margin-bottom: 0;
 }
 
-.swal2-modal .swal2-icon,
-.swal2-modal .swal2-success-ring {
-  margin-top: 0;
-  margin-bottom: 42px;
-}
+/* .swal2-modal .swal2-icon, */
+/* .swal2-modal .swal2-success-ring { */
+  /* margin-top: 0; */
+  /* margin-bottom: 42px; */
+/* } */
 
 .swal2-modal .swal2-buttonswrapper {
   margin-top: 0;
@@ -29569,7 +29594,7 @@ div.tagsinput span.tag a {
 /* Navbar */
 .navbar {
   font-weight: normal;
-  background: #191c24;
+  background: white;
   left: 244px;
   transition: left 0.25s ease;
   -webkit-transition: left 0.25s ease;
@@ -29638,10 +29663,10 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease;
   -moz-transition: width 0.25s ease;
   -ms-transition: width 0.25s ease;
-  box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 20px 19px 34px -15px rgba(0, 0, 0, 0.5);
-  color: #ffffff;
+  box-shadow: 4px 7px 25px -15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 7px 25px -15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 4px 7px 25px -15px rgba(0, 0, 0, 0.5);
+  color: black;
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;
@@ -29968,9 +29993,10 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-menu-wrapper .search input {
-  background: #191c24;
+  background: white;
   padding: 13px 20px 11px 20px;
   border: 1px solid #2c2e33;
+  color: black;
 }
 
 .navbar .navbar-menu-wrapper .search input::placeholder {
@@ -30038,6 +30064,7 @@ div.tagsinput span.tag a {
   width: 244px;
   height: 70px;
   background-color: white;
+  border-right: 2px solid #ecf0f5;
 }
 
 @media (max-width: 991px) {
@@ -30426,7 +30453,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link {
-  color: #6c7293;
+  color: white;
   padding: 0.5rem 0.35rem;
   position: relative;
   font-size: 0.855rem;
@@ -30438,10 +30465,13 @@ div.tagsinput span.tag a {
 .sidebar .nav.sub-menu .nav-item .nav-link.active {
   color: #ffffff;
   background: transparent;
+  color: yellow;
+  font-weight: 800;
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link:hover {
-  color: #ffffff;
+  color: yellow;
+    font-weight: 800;
 }
 
 .sidebar .nav.sub-menu .nav-item:hover {
@@ -30801,11 +30831,75 @@ div.tagsinput span.tag a {
 }
 
 .content-wrapper {
-  background: #000000;
+  background: #ecf0f5;
   padding: 1.875rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;
   flex-grow: 1;
 }
 
+.bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color: #00c0ef !important;
+}
+.small-box>.inner {
+  padding: 10px;
+}
+.small-box h3, .small-box p {
+  z-index: 5;
+}
+
+.small-box h3 {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  padding: 0;
+}
+.small-box h3, .small-box p {
+  z-index: 5;
+}
+
+.small-box p {
+  font-size: 15px;
+}
+.small-box .icon {
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  transition: all .3s linear;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  z-index: 0;
+  font-size: 90px;
+  color: rgba(0,0,0,0.15);
+}
+.small-box>.small-box-footer {
+  position: relative;
+  text-align: center;
+  padding: 3px 0;
+  color: #fff;
+  color: rgba(255,255,255,0.8);
+  display: block;
+  z-index: 10;
+  background: rgba(0,0,0,0.1);
+  text-decoration: none;
+  border-radius: 0 0 15px 5px;
+}
+.small-box {
+  border-radius: 20px 5px 20px 5px;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+  background-color: #f39c12 !important;
+}
+.bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
+  background-color: #00a65a !important;
+}
+.bg-blue {
+  background-color: #0073b7 !important;
+}
 /*# sourceMappingURL=maps/style.css.map */

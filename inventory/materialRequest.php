@@ -9,7 +9,7 @@ $ADVANTAGE_level = $_SESSION['ADVANTAGE_level'];
 if ($isVendor == 1) {
     ?>
     <script>
-           window.location.href = "/corona/inventory/vendor_materialRequest.php";
+        window.location.href = "/inventory/vendor_materialRequest.php";
     </script>
 <?
 }
@@ -110,15 +110,15 @@ if ($isVendor == 1) {
 
 
 
-$materialRequestStatement = " SELECT a.siteid FROM `material_requests` a INNER JOIN sites b ON a.siteid=b.id where a.status='pending' ";
-if (isset($_REQUEST['atmid']) && $_REQUEST['atmid'] != '') {
-    $atmid = $_REQUEST['atmid'];
-    $materialRequestStatement .= " and b.atmid='" . $atmid . "' ";
-}
-$materialRequestStatement .= "  group by a.siteid order by a.id DESC ";
+                        $materialRequestStatement = " SELECT a.siteid FROM `material_requests` a INNER JOIN sites b ON a.siteid=b.id where a.status='pending' ";
+                        if (isset($_REQUEST['atmid']) && $_REQUEST['atmid'] != '') {
+                            $atmid = $_REQUEST['atmid'];
+                            $materialRequestStatement .= " and b.atmid='" . $atmid . "' ";
+                        }
+                        $materialRequestStatement .= "  group by a.siteid order by a.id DESC ";
 
 
-// echo $materialRequestStatement ; 
+                        // echo $materialRequestStatement ; 
                         $siteids = array();
                         $siteidsql = mysqli_query($con, $materialRequestStatement);
                         while ($siteidsql_result = mysqli_fetch_assoc($siteidsql)) {
@@ -157,8 +157,8 @@ $materialRequestStatement .= "  group by a.siteid order by a.id DESC ";
                                     $sql = mysqli_query($con, "SELECT * FROM sites WHERE id IN ($siteids) LIMIT $offset, $recordsPerPage");
                                     while ($sql_result = mysqli_fetch_assoc($sql)) {
 
-                                        $networkIP = 
-                                        $ipRemark = '';
+                                        $networkIP =
+                                            $ipRemark = '';
                                         $error = 0;
                                         $configurationRemark = '';
                                         $configurationError = 0;
@@ -276,7 +276,12 @@ $materialRequestStatement .= "  group by a.siteid order by a.id DESC ";
                             <?php
                         } else {
                             echo '<div class="noRecordsContainer">
-                                        <img src="../assets/images/noRecords.png">
+                            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+                            <dotlottie-player src="../json/nofound.json" background="transparent" speed="1" loop autoplay style="
+                            height: 400px;
+                            width: 100%;
+                        "></dotlottie-player>
+                            
                                     </div>';
                         }
                         ?>
@@ -363,7 +368,13 @@ $materialRequestStatement .= "  group by a.siteid order by a.id DESC ";
                         } else {
                             echo '
                                             <div class="noRecordsContainer">
-                                                <img src="assets/noRecords.png">
+                                                    
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+    <dotlottie-player src="../json/nofound.json" background="transparent" speed="1"  loop autoplay style="
+    height: 400px;
+    width: 100%;
+"></dotlottie-player>
+
                                             </div>';
                         }
                         ?>

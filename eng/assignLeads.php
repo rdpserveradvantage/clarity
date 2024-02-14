@@ -48,6 +48,8 @@ while ($sql_result = mysqli_fetch_assoc($sql)) {
               if ($getAtmInfoSqlResult = mysqli_fetch_assoc($getAtmInfoSql)) {
 
 
+             
+
                 $atmid = $getAtmInfoSqlResult['atmid'];
                 $address = $getAtmInfoSqlResult['address'];
                 $esd = $getAtmInfoSqlResult['ESD'];
@@ -68,7 +70,7 @@ while ($sql_result = mysqli_fetch_assoc($sql)) {
 
                     if ($isFeasibiltyDone == 1) {
                       echo 'Feasibility Done!';
-                      echo ' | <a href="editFeasibilitycheck.php?siteid=' . $siteid . '" target="_blank">Edit Feasibility</a>';
+                      echo ' | <a style="display:none;" href="editFeasibilitycheck.php?siteid=' . $siteid . '" target="_blank">Edit Feasibility</a>';
 
 
                     } elseif ($isFeasibiltyDone == 0 && $esd == '0000-00-00 00:00:00' || $esd == '') {
@@ -101,13 +103,15 @@ while ($sql_result = mysqli_fetch_assoc($sql)) {
                     if ($esd != '0000-00-00 00:00:00' || $asd == '') {
                       ?>
                       |
+                   
+
 
                       <button type="button" class="asd-link btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#asd-link-modal" data-act="add" data-value="<?= $id; ?>"
-                        data-siteid="<?php echo $siteid; ?>" data-atmid="<?php echo $atmid; ?>" <?  if ( $esd == '0000-00-00 00:00:00' || $esd == '' || $asd != '0000-00-00 00:00:00' || $asd == '') {
+                        data-siteid="<?php echo $siteid; ?>" data-atmid="<?php echo $atmid; ?>" <? if ($esd == '0000-00-00 00:00:00' || $esd == '' || !empty($asd)) {
                                 echo ' disabled';
                               } ?>>
-                        &nbsp; Start ASD
+                        &nbsp; Start Feasibility
                       </button>
 
                       <? echo $asd;

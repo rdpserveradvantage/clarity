@@ -35,6 +35,9 @@ if($uname && $password){
                 $_SESSION['isVendor'] = $sql_result['isVendor'];
                 $_SESSION['islho'] = $sql_result['islho'];
                 
+                $_SESSION['contact'] = $sql_result['contact'];
+
+                
                 $userid = $sql_result['id'];
                 
                 if($uname == 'admin@gmail.com'){

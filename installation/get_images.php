@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $response[] = 'http://clarity.advantagesb.com/corona/eng/'.$row['imageUrl'];
+            $response[] = 'http://clarity.advantagesb.com/eng/'.$row['imageUrl'];
         }
         echo json_encode(array("success" => true, "images" => $response));
     } else {

@@ -152,7 +152,7 @@ $sql_query = "$statement LIMIT $offset, $page_size";
 <div class="col-12 grid-margin">
     <div class="card">
         <div class="card-header">
-            <h5>Total Records: <strong class="record-count">
+            <h5>Total Sites: <strong class="record-count">
                     <?= $total_records; ?>
                 </strong></h5>
 

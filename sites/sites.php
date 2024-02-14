@@ -221,14 +221,17 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                     </strong></h5>
 
                 <hr />
-                <form action="exportsites.php" method="POST">
-                    <input type="hidden" name="exportSql" value="<? echo $atm_sql; ?>">
-                    <input type="submit" name="exportsites" class="btn btn-primary" value="Export">
-                </form>
 
-                <form id="submitForm">
-                    <button type="submit">Bulk Delegate</button>
-                </form>
+                <div class="flex" style="display:flex;">
+                    <form action="exportsites.php" method="POST">
+                        <input type="hidden" name="exportSql" value="<? echo $atm_sql; ?>">
+                        <input type="submit" name="exportsites" class="btn btn-primary" value="Export">
+                    </form>
+
+                    <form id="submitForm" style="margin: auto 10px;">
+                        <button style="background: red;color: white;" type="submit">Bulk Delegate</button>
+                    </form>
+                </div>
 
             </div>
             <div class="card-body" style="overflow:auto;">
@@ -242,7 +245,7 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                     <thead>
                         <tr class="table-primary">
                             <th>#</th>
-                            <th><input type="checkbox" id="check_all">Check All</th>
+                            <th style="padding-right:5px;"><input type="checkbox" id="check_all">Check All</th>
                             <th>atmid </th>
                             <th>Delegation</th>
                             <th>Delegated To</th>
@@ -372,7 +375,7 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                             } else {
                                 $isDelegated = 0;
                             }
-                            $delEngID = mysqli_fetch_assoc(mysqli_query($con, "SELECT engineerId FROM `delegation` where atmid='" . $atmid . "'"))['engineerId'];
+                            $delEngID = mysqli_fetch_assoc(mysqli_query($con, "SELECT engineerId FROM `delegation` where atmid='" . $atmid . "' order by id desc"))['engineerId'];
                             ?>
 
                             <tr>
@@ -392,7 +395,8 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
 
 
                                 </td>
-                                <td class="strong"> <a href="atmEdit.php?id=<? echo $id; ?>&atmid=<? echo $atmid; ?>"><i
+                                <td class="strong" style="    font-weight: 700;"> <a
+                                        href="atmEdit.php?id=<? echo $id; ?>&atmid=<? echo $atmid; ?>"><i
                                             class="mdi mdi-tooltip-edit"></i></a> |
                                     <? echo $atmid; ?>
                                 </td>
@@ -438,31 +442,29 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                                         data-act="add" data-siteid="<?php echo $id; ?>">History</a>
 
                                     <?
-                                    if($projectInstallation){
+                                    if ($projectInstallation) {
                                         ?>
+                                        |
                                         <a href="#" data-bs-toggle="modal" class="schedule-link" data-bs-target="#scheduleModal"
-                                        data-act="add" data-siteid="<?php echo $id; ?>">View Schedule</a>
+                                            data-act="add" data-siteid="<?php echo $id; ?>">View Schedule</a>
                                     <?php }
                                     ?>
 
                                 </td>
                                 <td>
+                                    <a href="schedule.php?id=<?= $id; ?>&atmid=<?= $atmid; ?>"
+                                        class="btn btn-primary">Schedule</a>
                                     <?
                                     echo ($verificationStatus
                                         ? ($verificationStatus === 'Verify' ? '<button class="btn btn-success btn-icon" title="Verification Approved">&#10004;</button>'
                                             : '<button class="btn btn-danger btn-icon" title="Verification Reject ">R</button> | <a href="reopenRejectFeasibility.php?id=' . $id . '&atmid=' . $atmid . '&action=reopen_redelegation&vendor=' . $projectInstallationVendor . '">Reopen <span style="color:red">⟳</span></a>')
                                         . ($projectInstallation
                                             ? ' | Sent to Vendor for Installation : <u><b>' . getVendorName($projectInstallationVendor) . '</b></u>'
-                                            : ($verificationStatus === 'Verify'
-                                                ? ' | <a href="sendToInstallation.php?id=' . $id . '&atmid=' . $atmid . '">Proceed To Installation</a>'
-                                                : '')
+                                            : ''
                                         )
                                         : '<button class="btn btn-warning btn-icon" style="  width: 20px;height: auto !important;" title="Pending">P</button>'
                                     );
-
-                                    echo ' | <strong style="    color: #01a9ac;box-shadow: 1px 1px 1px 1px gray;
-    padding: 4px;">' . $lastUpdate . '</strong>';
-
+                                    echo ' | <strong style="    color: #01a9ac;box-shadow: 1px 1px 1px 1px gray; padding: 4px;">' . $lastUpdate . '</strong>';
                                     ?>
                                 </td>
 
@@ -719,12 +721,17 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
         for (var i = 0; i < checkedIds.length; i++) {
             form.append('<input type="hidden" name="checkedIds[]" value="' + checkedIds[i] + '" />');
         }
-        $('body').append(form);
-        form.submit();
+        if (checkedIds.length > 0) {
+            $('body').append(form);
+            form.submit();
+        }else{
+            alert('No Site Selected !');
+        }
+
     });
 
 
-    
+
 
     $(document).on('click', '.schedule-link', function () {
 

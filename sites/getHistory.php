@@ -59,7 +59,12 @@ if (mysqli_num_rows($sql) > 0) {
     echo '
                                             
 <div class="noRecordsContainer">
-    <img src="assets/no_records.jpg">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+    <dotlottie-player src="../json/nofound.json" background="transparent" speed="1" loop autoplay style="
+    height: 400px;
+    width: 100%;
+"></dotlottie-player>
+    
 </div>';
 
 } ?>

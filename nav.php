@@ -51,14 +51,15 @@ if ($_SESSION['ADVANTAGE_username']) {
 
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/index.php"
+            <a class="sidebar-brand brand-logo" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/index.php"
                 style="color:white;">
-                <img src="http://clarity.advantagesb.com/assets/1601680170_capture.jpg" alt="logo" />
+                <img src="http://clarity.advantagesb.com/assets/railtellogo.jpg" alt="logo" />
 
 
             </a>
-            <a class="sidebar-brand brand-logo-mini" href="index.php"><img src="assets/images/logo-mini.svg"
-                    alt="logo" /></a>
+            <a class="sidebar-brand brand-logo-mini" href="index.php">
+                
+                </a>
         </div>
 
 
@@ -68,7 +69,7 @@ if ($_SESSION['ADVANTAGE_username']) {
                     <div class="profile-pic">
                         <div class="count-indicator">
                             <img class="img-xs rounded-circle "
-                                src="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/images/faces/face15.jpg" alt="">
+                                src="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/images/faces/face15.jpg" alt="">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
@@ -126,7 +127,14 @@ if ($_SESSION['ADVANTAGE_username']) {
             </li>
 
 
-
+            <li class="nav-item menu-items ">
+            <a class="nav-link" href="http://clarity.advantagesb.com">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
 
 
             <?
@@ -142,7 +150,31 @@ if ($_SESSION['ADVANTAGE_username']) {
                     <a class="nav-link" data-bs-toggle="collapse" href="#<?= $targetDiv; ?>" aria-expanded="false"
                         aria-controls="<?= $targetDiv; ?>">
                         <span class="menu-icon">
-                            <i class="mdi mdi-laptop"></i>
+                            <!-- <i class="mdi mdi-security"></i> -->
+                            <?
+                            
+                            if ($main_name == 'Admin') {
+                                echo '<i class="mdi mdi-security" ></i>';
+                                // echo '<i class="fa fa-american-sign-language-interpreting"></i>';                                                
+                            } else if ($main_name == 'Sites') {
+                                echo '<i class="mdi mdi-sitemap"></i></span>';
+                            } else if ($main_name == 'Project') {
+                                echo '<i class="mdi mdi-chart-areaspline" style="color: #FFB64D;"></i>';
+                            } else if ($main_name == 'Inventory') {
+                                echo '<i class="mdi mdi-playlist-check" style="color: #8df3ff;"></i>';
+                            } else if ($main_name == 'Actions') {
+                                echo '<i class="feather icon-navigation-2"></i>';
+                            } else if ($main_name == 'IP Configuration') {
+                                echo '<i class="mdi mdi-screwdriver" style="color: #23ff23;"></i>';
+                            }else if ($main_name == 'Leads') {
+                                echo '<i class="mdi mdi-format-align-center" style="color: #23ff23;"></i>';
+                            }else if ($main_name == 'Reports') {
+                                echo '<i class="mdi mdi-file-chart align-center" style="color: #23ff23;"></i>';
+                            }
+                            
+                            
+                            
+                            ?>
                         </span>
                         <span class="menu-title">
                             <? echo $main_name; ?>

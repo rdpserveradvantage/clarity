@@ -30,37 +30,40 @@ $id = $_REQUEST['id'];
                                 <input type="hidden" name="atmid" value="<? echo $atmid; ?>" />
                                 <input type="hidden" name="siteid" value="<? echo $siteid; ?>" />
                                 <div class="row">
-                                    <div class="col-sm-12 extra_highlight">
+                                    <div class="grid-margin col-sm-12 extra_highlight">
                                         <label>LR Copy</label><br />
                                         <input type="file" name="lrCopy" required />
                                     </div>
 
-                                    <div class="col-sm-12 extra_highlight">
+                                    <div class="grid-margin col-sm-12 extra_highlight">
                                         <label>Delivery Challan</label><br />
                                         <input type="file" name="deliveryChallan" required />
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="grid-margin col-sm-12">
                                         <label>Challan Number</label>
                                         <input type="text" name="challanNumber" class="form-control" required />
                                     </div>
                                 </div>
 
+
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="grid-margin col-sm-12">
                                         <label>Receivers Name</label>
-                                        <input type="text" name="receiversName" class="form-control" required />
+                                        <input type="text" name="receiversName" value="<?php echo $_SESSION['ADVANTAGE_username']; ?>" class="form-control" required />
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="grid-margin col-sm-12">
                                         <label>Receivers Number</label>
-                                        <input type="text" name="receiversNumber" class="form-control" required />
+                                        <input type="text" name="receiversNumber"  value="<?php echo $_SESSION['contact']; ?>" class="form-control" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Received Date</label>
-                                        <input type="date" name="receivedDate" class="form-control" required />
+                                        <input type="date" class="form-control esd-datetime-input"  name="receivedDate" min="<?php echo date('Y-m-d'); ?>" value="<?php echo date('Y-m-d'); ?>" required />
+
+                                        <!-- <input type="date" name="receivedDate" class="form-control" required /> -->
                                     </div>
 
                                     <div class="col-sm-6">
@@ -70,7 +73,7 @@ $id = $_REQUEST['id'];
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="grid-margin col-sm-12">
                                         <br />
                                         <button id="submitFormButton" type="button"
                                             class="btn btn-primary">Submit</button>

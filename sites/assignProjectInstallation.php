@@ -17,7 +17,7 @@ if($islho==1){
 }else if($isVendor==1){
     ?>
     <script>
-    window.location.href="/corona/sites/vendor_assignProjectInstallation.php?id=<?= $id; ?>&siteid=<?= $siteid ; ?>&atmid=<?= $atmid; ?>";
+    window.location.href="/sites/vendor_assignProjectInstallation.php?id=<?= $id; ?>&siteid=<?= $siteid ; ?>&atmid=<?= $atmid; ?>";
 </script>
     <? 
 }

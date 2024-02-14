@@ -16,7 +16,7 @@ if($isVendor==1){
     $vendor_id = " and vendorid='".$vendorid."'" ; 
     ?>
 <script>
-    // window.location.href="/corona/admin/vendor_add_user.php";
+    // window.location.href="/admin/vendor_add_user.php";
 </script>
     <?
     // header('Location: /');

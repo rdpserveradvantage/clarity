@@ -731,7 +731,7 @@
             <br />
             <div class="row">
                 <div class="col-sm-12">
-                <button type="submit" id="submitButton" class="btn btn-success">Save</button>
+                    <button type="submit" id="submitButton" class="btn btn-success">Save</button>
 
                     <!-- <button type="submit" id="submitButton" class="btn btn-success" onclick="saveForm()">Save</button> -->
                     <div id="loadingIndicator" style="display: none;">Please Wait ...</div>
@@ -742,6 +742,54 @@
     </div>
 
     <script>
+
+        $(document).ready(function (event) {
+
+            function validatePhoneNumber2(event) {
+                var phoneNumber = $(this).val();
+                if (phoneNumber.length !== 10) {
+                    alert('Invalid phone number!');
+                    $(this).focus();
+                    event.preventDefault(); // Prevents default behavior (removing focus)
+                    return false;
+                }
+                return true;
+            }
+
+
+            function validatePhoneNumber(event) {
+                var charCode = event.which || event.keyCode;
+                if (charCode < 48 || charCode > 57) { // Ensure it's a digit (0-9)
+                    event.preventDefault();
+                    return false;
+                }
+                var phoneNumber = $(this).val() + String.fromCharCode(charCode);
+                if (phoneNumber.length === 10) {
+                    var phoneNumberPattern = /^\d{10}$/; // Exactly 10 digits
+                    if (!phoneNumberPattern.test(phoneNumber)) {
+                        // alert("Please enter a valid 10-digit phone number.");
+                        event.preventDefault();
+                        return false;
+                    }
+                } else if (phoneNumber.length > 10) {
+                    // alert("Please enter a 10-digit phone number.");
+                    event.preventDefault();
+                    return false;
+                }
+                return true;
+            }
+
+            // Attach keypress event handler to the input field
+            $('input[name="backroomKeyNumber"]').on('keypress', validatePhoneNumber);
+            $('input[name="backroomKeyNumber"]').on('change', validatePhoneNumber2);
+
+            
+            $('input[name="nearestShopNumber"]').on('keypress', validatePhoneNumber);
+            $('input[name="nearestShopNumber"]').on('change', validatePhoneNumber2);
+            
+
+        });
+
         $(document).ready(function () {
 
             // Show/hide ATMID 2 and ATMID 3 based on the selected value

@@ -29,7 +29,7 @@ $ADVANTAGE_level = $_SESSION['ADVANTAGE_level'];
 if ($islho == 0 && $isVendor == 0) {
     ?>
     <script>
-        window.location.href = "/corona/sites/sites.php";
+        window.location.href = "/sites/sites.php";
     </script>
 <?
     // header('Location: /');
@@ -38,7 +38,7 @@ if ($islho == 0 && $isVendor == 0) {
 } else if ($ADVANTAGE_level == 3) {
     ?>
         <script>
-            window.location.href = "/corona/sites/engsites.php";
+            window.location.href = "/sites/engsites.php";
         </script>
 <?
 }
@@ -74,6 +74,7 @@ if ($_VENDOR_LOGIN) {
     $atm_sql .= " INNER JOIN vendorsitesdelegation b
                                 ON a.id = b.siteid
                                 and b.vendorid = '" . $_GLOBAL_VENDOR_ID . "'
+                                and b.status=1 
 
                                 ";
 } else {
@@ -113,8 +114,8 @@ if (isset($_REQUEST['isFeasibiltyDone']) && $_REQUEST['isFeasibiltyDone'] != '')
 }
 if (isset($_REQUEST['isDelegated']) && $_REQUEST['isDelegated'] != '') {
     $isDelegatedFilter = $_REQUEST['isDelegated'];
-    $atm_sql .= "and a.isDelegated like '%" . $isDelegatedFilter . "%'";
-    $sqlappCount .= "and a.isDelegated like '%" . $isDelegatedFilter . "%'";
+    $atm_sql .= "and a.delegatedByVendor like '%" . $isDelegatedFilter . "%'";
+    $sqlappCount .= "and a.delegatedByVendor like '%" . $isDelegatedFilter . "%'";
 }
 
 if (isset($_REQUEST['cust']) && $_REQUEST['cust'] != '') {
@@ -147,14 +148,14 @@ if ($assignedLho) {
 
 
 
-$atm_sql .= "and a.status=1 and b.isPending=0 order by a.id desc";
-$sqlappCount .= "and a.status=1 and b.isPending=0  ";
+$atm_sql .= "and a.status=1 and b.isPending=0 group by a.atmid order by a.id desc";
+$sqlappCount .= "and a.status=1 and b.isPending=0  group by a.atmid ";
 
 // echo $sqlappCount;
 $page_size = 20;
 $result = mysqli_query($con, $sqlappCount);
 $row = mysqli_fetch_assoc($result);
-$total_records = $row['total'];
+$total_records = mysqli_num_rows($result);
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $page_size;
 $total_pages = ceil($total_records / $page_size);
@@ -447,11 +448,11 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                             $row22 = mysqli_fetch_assoc($result22);
 
 
-                            $sql23  = mysqli_query($con,"select * from projectInstallation where atmid='".$atmid."' and isDone=0");
-                            if($sql23Result = mysqli_fetch_assoc($sql23)){
-                                $foundForInstallation=1 ; 
-                            }else{
-                                $foundForInstallation=0 ; 
+                            $sql23 = mysqli_query($con, "select * from projectInstallation where atmid='" . $atmid . "' and isDone=0");
+                            if ($sql23Result = mysqli_fetch_assoc($sql23)) {
+                                $foundForInstallation = 1;
+                            } else {
+                                $foundForInstallation = 0;
                             }
 
 
@@ -475,17 +476,24 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                                 <td class="<? if ($islho == 1) {
                                     echo 'displayNone';
                                 } ?>">
+                                
                                     <?php
 
-                                    if ($isFeasibiltyDoneRecord) {
-                                        echo 'Feasibility: Done | ';
-                                        echo '<a href="./feasibilityReport1.php?atmid=' . $atmid . '" target="_blank">Report</a>';
-                                    } else {
-                                        if ($isDelegated == 0) {
-                                            echo '<a href="vendorsDelegation.php?id=' . $id . '&atmid=' . $atmid . '">Delegate ➜</a>';
+                                    $isScheduleFound = mysqli_fetch_assoc(mysqli_query($con, "select count(1) as total from projectinstallation where atmid='" . $atmid . "' and status=1"))['total'];
+                                    if ($isScheduleFound) {
+                                        if ($isFeasibiltyDoneRecord) {
+                                            echo 'Feasibility: Done | ';
+                                            echo '<a href="./feasibilityReport1.php?atmid=' . $atmid . '" target="_blank">Report</a>';
                                         } else {
-                                            echo '<button class="btn btn-success btn-icon" style="  width: 20px;height: auto !important;">&#10004;</button> | <a href="vendorsDelegation.php?id=' . $id . '&atmid=' . $atmid . '&action=redelegate">Redelegate <span style="color:red">⟳</span></a>';
+                                            if ($isDelegated == 0) {
+                                                echo '<a href="vendorsDelegation.php?id=' . $id . '&atmid=' . $atmid . '">Delegate ➜</a>';
+                                            } else {
+                                                echo '<button class="btn btn-success btn-icon" style="  width: 20px;height: auto !important;">&#10004;</button> | <a href="vendorsDelegation.php?id=' . $id . '&atmid=' . $atmid . '&action=redelegate">Delegate ➜</a>';
+                                            }
                                         }
+
+                                    } else {
+                                        echo 'No Schedule';
                                     }
                                     ?>
                                 </td>
@@ -502,7 +510,7 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                                         $delegationsql_result = mysqli_fetch_assoc($delegationsql);
                                         $delegationDate = $delegationsql_result['created_at'];
 
-                                        $checkdel_query = mysqli_query($con, "SELECT engineerId FROM `delegation` WHERE atmid like '" . trim($atmid) . "'");
+                                        $checkdel_query = mysqli_query($con, "SELECT engineerId FROM `delegation` WHERE atmid like '" . trim($atmid) . "' order by id desc");
 
 
                                         if (mysqli_num_rows($checkdel_query) > 0) {
@@ -530,6 +538,16 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
 
                                     <a href="#" data-bs-toggle="modal" class="history-link" data-bs-target="#historyModal"
                                         data-act="add" data-siteid="<?php echo $id; ?>">History</a>
+
+                                    <?
+                                    if ($projectInstallation) {
+                                        ?>
+                                        |
+                                        <a href="#" data-bs-toggle="modal" class="schedule-link" data-bs-target="#scheduleModal"
+                                            data-act="add" data-siteid="<?php echo $id; ?>">View Schedule</a>
+                                    <?php }
+                                    ?>
+
                                 </td>
                                 <td>
                                     <?
@@ -539,7 +557,7 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                                         . ($projectInstallation
                                             ? ' '
                                             : ($verificationStatus === 'Verify'
-                                                ? ' | <a href="sendToInstallation.php?id=' . $id . '&atmid=' . $atmid . '">Proceed To Installation</a>'
+                                                ? ''
                                                 : '')
                                         )
                                         : '<button class="btn btn-warning btn-icon" style="  width: 20px;height: auto !important;" title="Pending">P</button>'
@@ -563,7 +581,7 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                                     } else {
                                         if ($isSentToEngineer == 1 && $isFeasibiltyDoneRecord) {
                                             echo 'Assigned to <strong>' . $assignedToName . '</strong>';
-                                        } else if ($isFeasibiltyDoneRecord && $foundForInstallation==1 ) {
+                                        } else if ($isFeasibiltyDoneRecord && $foundForInstallation == 1) {
                                             echo '<a href="assignProjectInstallation.php?id=' . $projectinstallationID . '&siteid=' . $id . '&atmid=' . $atmid . '">Engineer Assign</a>';
                                         } else {
                                             echo '-';
@@ -762,6 +780,27 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
 </div>
 
 
+<div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="ModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Schedule</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="schduleContent" style="overflow: scroll;max-height: 70vh;"></div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="ModalLabel" style="display: none;"
     aria-hidden="true">
@@ -789,6 +828,27 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
 
 <script>
 
+
+    $(document).on('click', '.schedule-link', function () {
+
+        var siteId = $(this).data("siteid");
+
+        var modal = document.getElementById("scheduleModal");
+        $.ajax({
+            url: "getschedule.php",
+            type: "POST",
+            data: {
+                siteId: siteId
+            },
+            success: function (response) {
+                $("#schduleContent").html(response);
+                modal.style.display = "block";
+            },
+            error: function () {
+                alert("Failed to fetch schdule data.");
+            }
+        });
+    });
 
     $("#check_all").change(function () {
         $(".single_site_delegate").prop('checked', $(this).prop("checked"));
@@ -834,6 +894,7 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
 </script>
 
 
-<script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+<!-- <script src="../../assets/vendors/js/vendor.bundle.base.js"></script> -->
 
 <?php include('../footer.php'); ?>

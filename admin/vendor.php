@@ -216,7 +216,7 @@ $('#saveVendorUser').click(function() {
 
   // Make AJAX call to save vendor user data
   $.ajax({
-    url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/admin/API/saveVendorUsers.php',
+    url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/admin/API/saveVendorUsers.php',
     type: 'POST',
     data: formData + '&vendorId=' + vendorId,
     success: function(response) {

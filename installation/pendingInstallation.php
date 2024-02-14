@@ -89,7 +89,7 @@
 
 
         <hr />
-        <h6 class="strong">Intallation Calls with Most Pending time </h6>
+        <h3 class="strong">Intallation Calls with Most Pending time </h3>
         <form action="exportPendingSites.php" method="POST">
 
             <input type="hidden" name="exportSql" value="<? echo $sqlStatement; ?>">

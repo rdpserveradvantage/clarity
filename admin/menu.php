@@ -63,12 +63,11 @@
                                         
                                         <form action="<? echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <div class="row">
-                                               <div class="col-sm-12">
+                                               <div class="col-sm-12 grid-margin">
                                                    <label>Create Menu</label>
                                                    <input type="text" name="menu" class="form-control">
                                                </div>
-                                                 <div class="col-sm-12">
-                                                   <br>
+                                                 <div class="col-sm-12 grid-margin">
                                                    <input type="submit" name="menu_submit" class="btn btn-primary">
                                                </div>
                                             </div>
@@ -85,7 +84,7 @@
                                         
                                 <form action="<? echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-12 grid-margin">
                                                     <label>Select Under</label>
                                                     <select name="menu" class="form-control" id="main_menu" required>
                                                         <option value="">Select</option>
@@ -97,17 +96,16 @@
                                                     </select>
                                                 </div>
                                                 
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-12 grid-margin">
                                                     <label>Submenu</label>
                                                     <input type="text" name="submenu" class="form-control" required>
                                                 </div>
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-12 grid-margin">
                                                     <label>Page</label>
                                                     <input type="text" name="page" class="form-control" placeholder="like index.php" required>
                                                 </div>
                                                 
-                                                <div class="col-sm-12">
-                                                    <br>
+                                                <div class="col-sm-12 grid-margin">
                                                     <input type="submit" name="submenu_submit" class="btn btn-primary">
                                                 </div>
                                                 

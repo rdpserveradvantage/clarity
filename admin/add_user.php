@@ -9,16 +9,16 @@
 $isVendor = $_SESSION['isVendor'];
 $islho = $_SESSION['islho'];
 
-if($isVendor==1){
-    
+if ($isVendor == 1) {
+
     ?>
-<script>
-    window.location.href="/corona/admin/vendor_add_user.php";
-</script>
-    <?
+    <script>
+        window.location.href = "/admin/vendor_add_user.php";
+    </script>
+<?
     // header('Location: /');
-        // exit;
-        
+    // exit;
+
 }
 
 
@@ -131,7 +131,7 @@ if($isVendor==1){
 
                                 $level = $sql_result['level'];
                                 $vendor_id = $sql_result['vendorid'];
-                                $vendorName = getVendorName($vendor_id) ; 
+                                $vendorName = getVendorName($vendor_id);
                                 $designation = '';
 
                                 if ($level == 1) {
@@ -148,9 +148,9 @@ if($isVendor==1){
                                         <?= $i; ?>
                                     </td>
                                     <td class="strong">
-                                        <?= $sql_result['name']; ?>
+                                            <?= $sql_result['name']; ?>
                                     </td>
-                                    
+
                                     <td style="text-transform: initial;">
                                         <?= $sql_result['uname']; ?>
                                     </td>
@@ -163,7 +163,9 @@ if($isVendor==1){
                                     <td>
                                         <?= $designation; ?>
                                     </td>
-                                    <td><?= $vendorName ; ?></td>
+                                    <td>
+                                        <?= $vendorName; ?>
+                                    </td>
                                     <td class="<?= $status_class; ?>">
                                         <?= $user_status; ?>
                                     </td>
@@ -216,19 +218,19 @@ if($isVendor==1){
 
                             <div class="row">
 
-                            <div class="col-sm-12 form-group">
+                                <div class="col-sm-12 form-group">
                                     <label>Is Contractor : *</label><br />
                                     <input type="radio" id="isVendorYes" name="isVendor" value="1"> : Yes
-                                    <input type="radio" id="isVendorNo"  name="isVendor" value="0"> : No
+                                    <input type="radio" id="isVendorNo" name="isVendor" value="0"> : No
                                 </div>
-                                
-                            <div class="col-sm-12 form-group">
+
+                                <div class="col-sm-12 form-group">
                                     <label>Is LHO : *</label>
                                     <br />
                                     <input type="radio" id="islhoYes" name="islho" value="1"> : Yes
                                     <input type="radio" id="islhoNo" name="islho" value="0"> : No
                                 </div>
-                                
+
 
 
                                 <div class="col-sm-12 form-group">
@@ -266,14 +268,14 @@ if($isVendor==1){
                                         <option value="2">Project Executive</option>
                                         <option value="5">Bank Executive</option>
                                         <option value="6">LHO</option>
-                                        
+
                                     </select>
                                 </div>
 
 
                                 <div class="col-sm-6 form-group">
                                     <label for="">Vendor : *</label>
-                                    <select class="form-control" name="vendorid" id="vendorSelect" required >
+                                    <select class="form-control" name="vendorid" id="vendorSelect" required>
                                         <option value="">Select</option>
                                         <?php
                                         $vendorsql = mysqli_query($con, "select * from vendor where status=1");
@@ -328,7 +330,7 @@ if($isVendor==1){
                             <ul style="overflow: scroll; max-height: 500px;">
                                 <?php
                                 $statusColumn = 'status';
-                                echo "select * from main_menu where $statusColumn=1" ; 
+                                // echo "select * from main_menu where $statusColumn=1" ; 
                                 $mainsql = mysqli_query($con, "select * from main_menu where $statusColumn=1");
                                 while ($mainsql_result = mysqli_fetch_assoc($mainsql)) {
                                     $main_id = $mainsql_result['id'];
@@ -480,13 +482,13 @@ if($isVendor==1){
                 success: function (response) {
                     console.log(response)
                     if (response == 1) {
-                        Swal.fire('Success','User added successfully !','success')
-                        .then(function () {
-                            window.location.reload();
+                        Swal.fire('Success', 'User added successfully !', 'success')
+                            .then(function () {
+                                window.location.reload();
                             });
                     } else {
-                        Swal.fire('Error','Failed to Update user. Please try again !','error')
-                        .then(function () {
+                        Swal.fire('Error', 'Failed to Update user. Please try again !', 'error')
+                            .then(function () {
                                 window.location.href = "doneConfigured.php";
                             });
 
@@ -500,11 +502,11 @@ if($isVendor==1){
             });
         });
     });
-    
+
 
     $(document).ready(function () {
         checkVendorRequirement();
-        
+
         $('input[name="isVendor"]').change(function () {
             checkVendorRequirement();
         });
@@ -521,16 +523,16 @@ if($isVendor==1){
                 $('#islhoNo').prop('checked', false);
             }
         }
-    }); 
+    });
 
 
-    
+
 </script>
 
 <? include('../footer.php'); ?>
 <script>
 
-$(document).ready(function () {
+    $(document).ready(function () {
         // Initial check of radio button on page load
         checkVendorRequirement();
 

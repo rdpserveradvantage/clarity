@@ -7,8 +7,10 @@
             <div class="card-body">
                 <div class="d-flex flex-row justify-content-between">
                     <h4 class="card-title mb-1">Installation Calls with Most Pending time</h4>
+                    
                     <p class="text-muted mb-1">Your data status</p>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-12">
                         <div class="preview-list">

@@ -1,5 +1,5 @@
 <?php
-include($_SERVER["DOCUMENT_ROOT"]. '/corona/config.php');
+include($_SERVER["DOCUMENT_ROOT"]. '/config.php');
 
 $name = $_REQUEST['name'];
 $uname = $_REQUEST['uname'];

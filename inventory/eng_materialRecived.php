@@ -53,8 +53,8 @@
         $end_window = min($start_window + $window_size - 1, $total_pages);
         $sql_query = "$atm_sql LIMIT $offset, $page_size";
         // }
-        echo $sql_query;
-        
+        // echo $sql_query;
+
         ?>
 
 
@@ -170,10 +170,10 @@
                         echo "<td class='strong'>$atmid</td>";
                         echo "<td class='strong'>$serialNumber</td>";
                         echo "<td class='strong'>"
-                        .'<button type="button" style="border:none;" class="view-material-list" data-id=' . $id . '>
+                            . '<button type="button" style="border:none;" class="view-material-list" data-id=' . $id . '>
                         View
-                        </button>'.
-                        "
+                        </button>' .
+                            "
                         </td>";
                         echo "<td class='strong'>" .
                             ($isDelivered == 1 ? 'Delivered' : 'In-Transit') . "</td>";
@@ -182,7 +182,7 @@
                                     View
                                     </button>'
                             : "<a href='vendor_updateMaterialSentTracking.php?id={$id}&siteid={$siteid}&atmid={$atmid}'>Update Receive</a>") . "</td>";
-                        echo "<td>".getUsername($contactPerson)."</td>";
+                        echo "<td>" . getUsername($contactPerson) . "</td>";
                         echo "<td>$contactNumber</td>";
                         // echo "<td>$contactPerson</td>";
                         echo "<td>$pod</td>";
@@ -267,7 +267,12 @@
                     echo '
                                             
                                 <div class="noRecordsContainer">
-                                    <img src="../assets/images/noRecords.png">
+                                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+                                <dotlottie-player src="../json/nofound.json" background="transparent" speed="1" loop autoplay style="
+                                height: 400px;
+                                width: 100%;
+                            "></dotlottie-player>
+                                
                                 </div>';
                 }
 
@@ -318,8 +323,8 @@
         </div>
 
         <script>
-          
-          $('.view-material-list').click(function () {
+
+            $('.view-material-list').click(function () {
                 var id = $(this).data('id');
                 $.ajax({
                     type: 'POST',
@@ -342,8 +347,8 @@
             });
 
 
-          
-          $('.view-dispatch-info').click(function () {
+
+            $('.view-dispatch-info').click(function () {
                 var id = $(this).data('id');
                 $.ajax({
                     type: 'POST',

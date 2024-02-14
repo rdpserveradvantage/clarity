@@ -1,21 +1,21 @@
 <? include('../config.php');
-$siteId = $_REQUEST['siteId'];
+// $siteId = $_REQUEST['siteId'];
 
 $i = 1;
 
 $atmid = $_REQUEST['atmid'];
 
-$sitesql = mysqli_query($con,"select id from sites where atmid='".$atmid."'");
-if($sitesql_result = mysqli_fetch_assoc($sitesql)){
+$sitesql = mysqli_query($con, "select id from sites where atmid='" . $atmid . "'");
+if ($sitesql_result = mysqli_fetch_assoc($sitesql)) {
 
     $siteId = $sitesql_result['id'];
 
 
     $sql = mysqli_query($con, "select * from event_log where site_id='" . $siteId . "'");
     if (mysqli_num_rows($sql) > 0) {
-    
+
         ?>
-    
+
         <table class="table">
             <thead>
                 <tr class="table-primary">
@@ -30,7 +30,7 @@ if($sitesql_result = mysqli_fetch_assoc($sitesql)){
             <tbody>
                 <?
                 while ($sql_result = mysqli_fetch_assoc($sql)) {
-    
+
                     $atmid = $sql_result['atmid'];
                     $portal = $sql_result['portal'];
                     $event = $sql_result['event_name'];
@@ -57,12 +57,22 @@ if($sitesql_result = mysqli_fetch_assoc($sitesql)){
                             <?= $created_at; ?>
                         </td>
                     </tr>
-    
+
                     <? $i++;
                 } ?>
             </tbody>
         </table>
-    <? }  
+    <? }
 } else {
-    echo 'No Data Found !';
+    ?>
+    <div class="noRecordsContainer">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+        <dotlottie-player src="json/nofound.json" background="transparent" speed="1" loop autoplay style="
+                                    height: 400px;
+                                    width: 100%;
+                                "></dotlottie-player>
+
+    </div>
+<?
+
 }

@@ -146,10 +146,11 @@
         $data = array();
 
         ?>
-
+<br />
         <div class="col-md-12 grid-margin stretch-card" id="highchart-container" style="height: 500px;"></div>
 
         <div class="col-md-12 grid-margin stretch-card">
+
             <div class="table-responsive" style="width: 100%;">
                 <table class="table table-hover">
                     <thead>
@@ -285,7 +286,7 @@
                     type: 'column'
                 },
                 title: {
-                    text: 'Site Status by LHO'
+                    text: 'Site Status LHO Wise'
                 },
                 xAxis: {
                     categories: lhoNames,

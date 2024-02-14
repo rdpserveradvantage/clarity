@@ -43,10 +43,10 @@ foreach ($serialNumbers as $serialNumbersKey => $serialNumbersVal) {
 // return ;
 
 $lho = mysqli_fetch_assoc(mysqli_query($con, "select LHO from sites where id='" . $siteid . "'"))['LHO'];
-$query = "INSERT INTO material_send (atmid, siteid, vendorId, contactPersonName, contactPersonNumber, address, pod, courier, remark,portal,lho) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$query = "INSERT INTO material_send (atmid, siteid, vendorId, contactPersonName, contactPersonNumber, address, pod, courier, remark,portal,lho,created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $con->prepare($query);
 $portal = 'clarity';
-$stmt->bind_param("ssissssssss", $atmid, $siteid, $vendorId, $contactPersonName, $contactPersonNumber, $address, $pod, $courier, $remark, $portal, $lho);
+$stmt->bind_param("ssisssssssss", $atmid, $siteid, $vendorId, $contactPersonName, $contactPersonNumber, $address, $pod, $courier, $remark, $portal, $lho, $userid);
 // $stmt->bind_param("ssisssssss", $atmid, $siteid, $vendorId, $contactPersonName, $contactPersonNumber, $address, $pod, $courier, $remark,$portal,$lho);
 $stmt->execute();
 $stmt->close();

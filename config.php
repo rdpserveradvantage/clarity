@@ -5,13 +5,13 @@ error_reporting(0);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$base_url = "http://clarity.advantagesb.com/corona/";
+$base_url = "http://clarity.advantagesb.com/";
 
 $host = "10.63.21.6";
 $user = "advantage";
 $pass = "qwerty121";
-$dbname = "adv";
-// $dbname = "sarmicrosystems_advantage";
+// $dbname = "adv";
+$dbname = "sarmicrosystems_advantage";
 
 
 function connectToDatabase()
@@ -531,5 +531,10 @@ function handleUploads($files, $targetDir) {
     return $uploadedFiles;
 }
 
+function session_print(){
+    echo '<pre>';
+    print_r($_SESSION);
+    echo '<pre />';
+}
 
 ?>

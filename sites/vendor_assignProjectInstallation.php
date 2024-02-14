@@ -13,7 +13,7 @@ if($islho==0){
 }else if($isVendor==0){
     ?>
     <script>
-    // window.location.href="/corona/sites/vendorSendToInstallation.php";
+    // window.location.href="/sites/vendorSendToInstallation.php";
 </script>
     <? 
 }

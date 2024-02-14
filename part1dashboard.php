@@ -34,33 +34,32 @@ foreach ($queries as $query) {
 
 
 ?>
+
+<link rel="stylesheet" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/css/ionicons.min.css">
+
 <div class="row">
 
-  <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-9">
-            <div class="d-flex align-items-center align-self-start">
-              <h3 class="mb-0">
-                <?= $results[1] . ' / ' . $results[0]; ?>
-              </h3>
-              <p class="text-success ms-2 mb-0 font-weight-medium"></p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="icon icon-box-success ">
-              <span class="mdi mdi-arrow-top-right icon-item"></span>
-            </div>
-          </div>
-        </div>
-        <h6 class="text-muted font-weight-normal">Active / All </h6>
-        <h2 class="mb-0">Sites</h3>
+  <div class="col-lg-3 col-xs-6" style="color: white;">
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3 id="info_box_online">
+        <?= $results[1] . ' / ' . $results[0]; ?>
+        </h3>
+        <p>Active / All </p>
       </div>
+      <div class="icon">
+      <i class="mdi mdi-chart-pie"></i>
+      
+      </div>
+        <a href="./sites/sitestest.php" class="small-box-footer">Sites
+          <i class="fa fa-arrow-circle-right"></i>
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </a>
     </div>
-
-
   </div>
+
+
+
 
 
   <?
@@ -106,31 +105,27 @@ foreach ($queries as $query) {
   $sql_result = mysqli_fetch_assoc($sql);
   ?>
 
-  <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-9">
-            <div class="d-flex align-items-center align-self-start">
-              <h3 class="mb-0">
-                <?= $sql_result['ESD_Count'] . ' / ' . $sql_result['ASD_Count']; ?>
-              </h3>
-              <p class="text-success ms-2 mb-0 font-weight-medium"></p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="icon icon-box-success ">
-              <span class="mdi mdi-arrow-top-right icon-item"></span>
-            </div>
-          </div>
-        </div>
-        <h6 class="text-muted font-weight-normal">ESD / ASD </h6>
-        <h3 class="mb-0">Todays Installation</h3>
+
+<div class="col-lg-3 col-xs-6" style="color: white;">
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        <h3 id="info_box_online">
+        <?= $sql_result['ESD_Count'] . ' / ' . $sql_result['ASD_Count']; ?>
+        </h3>
+        <p>Est. Plan / Actual Live Sites</p>
       </div>
+      <div class="icon">
+      <i class="mdi mdi-settings"></i>
+      </div>
+        <a href="./sites/sitestest.php" class="small-box-footer">Todays Installation
+          <i class="fa fa-arrow-circle-right"></i>
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </a>
     </div>
-
-
   </div>
+
+
+
 
 
 
@@ -161,31 +156,53 @@ foreach ($queries as $query) {
 
   ?>
 
-  <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-9">
-            <div class="d-flex align-items-center align-self-start">
-              <h3 class="mb-0">
-                <?= ($statusCount[0] ? $statusCount[0] : '0') . ' / ' . ($statusCount[1] ? $statusCount[1] : '0'); ?>
-              </h3>
-              <p class="text-success ms-2 mb-0 font-weight-medium"></p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="icon icon-box-success ">
-              <span class="mdi mdi-arrow-top-right icon-item"></span>
-            </div>
-          </div>
-        </div>
-        <h6 class="text-muted font-weight-normal">In-transit / Delivered </h6>
-        <h3 class="mb-0">Material</h3>
+
+
+<div class="col-lg-3 col-xs-6" style="color: white;">
+    <div class="small-box bg-green">
+      <div class="inner">
+        <h3 id="info_box_online">
+        <?= ($statusCount[0] ? $statusCount[0] : '0') . ' / ' . ($statusCount[1] ? $statusCount[1] : '0'); ?>
+        </h3>
+        <p>In-transit / Delivered </p>
       </div>
+      <div class="icon">
+      <i class="mdi mdi-chart-line"></i>
+      </div>
+        <a href="./inventory/materialSent.php" class="small-box-footer">Material
+          <i class="fa fa-arrow-circle-right"></i>
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </a>
     </div>
-
-
   </div>
+
+
+
+
+  
+<div class="col-lg-3 col-xs-6" style="color: white;">
+    <div class="small-box bg-blue">
+      <div class="inner">
+        <h3 id="info_box_online">
+        <?= ($statusCount[0] ? $statusCount[0] : '0') . ' / ' . ($statusCount[1] ? $statusCount[1] : '0'); ?>
+        </h3>
+        <p>In-transit / Delivered </p>
+      </div>
+      <div class="icon">
+      <i class="mdi mdi-counter"></i>
+      </div>
+        <a href="./inventory/materialSent.php" class="small-box-footer">Material
+          <i class="fa fa-arrow-circle-right"></i>
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </a>
+    </div>
+  </div>
+
+
+
+
+
+  
 
 
 

@@ -6,7 +6,7 @@
     // echo '<pre>'; print_r($checkedIds); echo '</pre>';
     
     $acceptance_type = $_REQUEST['acceptance_type'];
-    
+
     // echo $acceptance_type;
     
     $datetime = date('Y-m-d H:i:s');
@@ -38,13 +38,16 @@
         updated_by='" . $userid . "' where id='" . $id . "'";
 
             if (mysqli_query($con, $updateSql)) {
+
+                mysqli_query($con, "update vendorsitesdelegation set status=0 where id<>'" . $id . "' and amtid like '" . $atmid . "'");
+
                 $delegatedToVendorName = getVendorName($vendorid);
-                mysqli_query($con,"update sites set isDelegated=1, delegatedToVendorId='".$vendorid."',
-                delegatedToVendorName='".$delegatedToVendorName."' where id='".$siteid."'");
+                mysqli_query($con, "update sites set isDelegated=1, delegatedToVendorId='" . $vendorid . "',
+                delegatedToVendorName='" . $delegatedToVendorName . "' where id='" . $siteid . "'");
                 echo $atmid . ' Accepted Successfully ! <br />';
 
 
-                vendorSiteAcceptance($siteid, $atmid, '',$delegatedToVendorName);
+                vendorSiteAcceptance($siteid, $atmid, '', $delegatedToVendorName);
 
 
             } else {
@@ -76,16 +79,16 @@
 
             foreach ($materialQuantities as $materialName => $quantity) {
                 // Insert the material request into the table
-
-                    $sql = "INSERT INTO material_requests (siteid, feasibility_id, material_name, quantity, status, created_by,created_at,type,vendorId)
-                VALUES ('$siteid', '$feasibiltyId', '$materialName', '$quantity', 'pending', '" . $userid . "','" . $datetime . "','External','".$vendorid."')";
-                    if ($con->query($sql) === false) {
-                        echo "Error: " . $sql . "<br>" . $con->error;
+    
+                $sql = "INSERT INTO material_requests (siteid, feasibility_id, material_name, quantity, status, created_by,created_at,type,vendorId)
+                VALUES ('$siteid', '$feasibiltyId', '$materialName', '$quantity', 'pending', '" . $userid . "','" . $datetime . "','External','" . $vendorid . "')";
+                if ($con->query($sql) === false) {
+                    echo "Error: " . $sql . "<br>" . $con->error;
                 }
             }
-                generatesAutoMaterialRequest($siteid, $atmid, '');
+            generatesAutoMaterialRequest($siteid, $atmid, '');
             // End Generate material requests
-    }
+        }
 
     }
     ?>

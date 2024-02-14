@@ -11,20 +11,21 @@
 
 
 
-<?php include('part1dashboard.php');?>
-
-
-<?php include('part5dashboard.php');?>
-
-<?php include('part2dashboard.php');?>
-
-<?php include('part3dashboard.php');?>
+<?php include('part1dashboard.php'); ?>
 
 
 
+<?php include('part5dashboard.php'); ?>
+
+<?php include('part2dashboard.php'); ?>
+
+<?php include('part3dashboard.php'); ?>
 
 
-            
+
+
+
+
 <!-- 
             <div class="row">
               <div class="col-sm-4 grid-margin">
@@ -389,4 +390,4 @@
               </div>
             </div>
            -->
-            <?php include('footer.php');?>
+<?php include('footer.php'); ?>

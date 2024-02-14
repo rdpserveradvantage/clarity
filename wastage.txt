@@ -1,0 +1,33 @@
+ESD / ASD 
+dashboard count
+
+Estimated Planned Sites / Actual Live Sites
+
+Start ASD => Start Feasibility
+
+
+
+Forth card
+Held-up Sites (all data date wise desc)
+LHO wise 
+(hold installation )
+reason- 
+
+
+Site Status LHO Wise : 
+show live sites
+
+Installation Calls With Most Pending Time
+ give link to show all pending sites
+
+ feasibilityData.php 
+ date range
+ vendor
+ status : approved , reject
+ unique ATMID
+
+ feasibiltiy approve / rejected / not feasible  ------------ clickable 
+
+feasibilityReport1.php
+    Add Heldup in feasibilty report 
+

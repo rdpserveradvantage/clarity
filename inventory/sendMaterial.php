@@ -130,7 +130,7 @@ function getSitesInfo($siteid, $parameter)
                                 $sealNumber = $getSerialSqlResult['sealNumber'];
 
                                 if (trim($material_name) == 'Router') {
-                                    echo '<input type="text" name="value[]" placeholder="Value" style="width: 15%;    background-color: #e9ecef;" value="' . $serialNumber . '" readonly required>
+                                    echo '<input type="text" name="value[]" placeholder="Search Serial Number ..." style="width: 15%;    background-color: #e9ecef;" value="' . $serialNumber . '" readonly required>
                                                          <select name="serialNumber[]" class="serial-number-list" style="width: 20%;    background-color: #e9ecef; " required>
                                                              <option value="' . $serialNumber . '">' . $serialNumber . '</option>
                                                          </select>';
@@ -144,7 +144,7 @@ function getSitesInfo($siteid, $parameter)
                         
                                 // }
                                 else {
-                                    echo '<input type="text" name="value[]" placeholder="Value" style="width: 15%;" required>
+                                    echo '<input type="text" name="value[]" placeholder="Search Serial Number ..." style="width: 15%;" required>
                                                          <select name="serialNumber[]" class="serial-number-list" style="width: 20%;" required>
                                                          </select>';
 
@@ -155,7 +155,7 @@ function getSitesInfo($siteid, $parameter)
                             if (trim($material_name) == 'Router') {
 
                             } else {
-                                echo '<button class="remove-field" onclick="removeAttributeField(event)" >Remove</button>';
+                                echo '<button class="remove-field" onclick="removeAttributeField(event)" style="background: red;color: white;">Remove</button>';
                             }
 
                             ?>

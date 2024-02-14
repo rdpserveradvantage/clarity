@@ -4,14 +4,14 @@
 if ($_SESSION['PROJECT_level'] == 3) {
 ?>
 <script>
-    window.location.href="/corona/eng/faultyMaterial.php";
+    window.location.href="/eng/faultyMaterial.php";
 </script>
 <?
 }
 else if ($_SESSION['isVendor'] == 1 && $_SESSION['PROJECT_level'] != 3) {
 ?>
 <script>
-    window.location.href="/corona/contractor/faultyMaterial.php";
+    window.location.href="/contractor/faultyMaterial.php";
 </script>
 <?
 }

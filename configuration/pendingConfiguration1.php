@@ -33,37 +33,37 @@
 
 
                                 <div class="row" id="additionalInfo" style="display:none">
-                                    <div class="col-sm-4">
-                                        <label for="networkIP">networkIP</label>
+                                    <div class="col-sm-4 grid-margin">
+                                        <label for="networkIP">Network IP</label>
                                         <input type="text" id="networkIP" name="networkIP" class="form-control"
                                             value="<?= $networkIP; ?>" readonly />
                                     </div>
 
-                                    <div class="col-sm-4">
-                                        <label for="routerIP">routerIP</label>
+                                    <div class="col-sm-4 grid-margin">
+                                        <label for="routerIP">Router IP</label>
                                         <input type="text" id="routerIP" name="routerIP" class="form-control"
                                             value="<?= $routerIP; ?>" readonly />
                                     </div>
-                                    <div class="col-sm-4">
-                                        <label for="atmIP">atmIP</label>
+                                    <div class="col-sm-4 grid-margin">
+                                        <label for="atmIP">ATM IP</label>
                                         <input type="text" id="atmIP" name="atmIP" class="form-control"
                                             value="<?= $atmIP; ?>" readonly />
                                     </div>
 
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4 grid-margin">
                                         <label class="label_label">Region</label>
                                         <input class="form-control" type="text" name="region" id="region"
                                             value="<? echo $region; ?>">
                                     </div>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4 grid-margin">
                                         <label class="label_label">City</label>
                                         <input class="form-control" type="text" name="city" id="city"
                                             value="<? echo $city; ?>" required>
                                     </div>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4 grid-margin">
                                         <label class="label_label">State</label>
                                         <select name="state" id="state" class="form-control" required>
                                             <option value="">Select State</option>
@@ -80,7 +80,7 @@
 
                                     </div>
 
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12 grid-margin">
                                         <label class="label_label">Locations</label>
                                         <input class="form-control" type="text" name="location" id="location"
                                             value="<? echo $location; ?>">
@@ -281,7 +281,12 @@
                             } else {
                                 echo '
                                     <div class="noRecordsContainer">
-                                        <img src="../assets/images/noRecords.png">
+                                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+                                    <dotlottie-player src="../json/nofound.json" background="transparent" speed="1" loop autoplay style="
+                                    height: 400px;
+                                    width: 100%;
+                                "></dotlottie-player>
+                                    
                                     </div>';
                             }
 

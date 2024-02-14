@@ -28,14 +28,14 @@ $sql = "INSERT INTO projectInstallation (siteid, atmid, status, created_by, crea
                                         port,switch,primaryDNS,alternateDNS)
                                         
                                         
-        VALUES ('".$id."', '".$atmid."', 1, '".$userid."', '".$datetime."', 0, '".$vendor."', 'Advantage', '".$scheduleAtmEngineerName."', 
-        '".$scheduleAtmEngineerNumber."', '".$bankPersonName."', '".$bankPersonNumber."', '".$backRoomKeyPersonName."', '".$backRoomKeyPersonNumber."','".$scheduleDate."',
-        '".$scheduleTime."','".$sbiTicketId."','".$port."','".$switch."','".$primaryDNS."','".$alternateDNS."')";
-        
-        if(mysqli_query($con,$sql)){
-            echo json_encode(202);
-            installationProceed($id,$atmid,'');
-        }
+        VALUES ('" . $id . "', '" . $atmid . "', 1, '" . $userid . "', '" . $datetime . "', 0, '" . $vendor . "', 'Advantage', '" . $scheduleAtmEngineerName . "', 
+        '" . $scheduleAtmEngineerNumber . "', '" . $bankPersonName . "', '" . $bankPersonNumber . "', '" . $backRoomKeyPersonName . "', '" . $backRoomKeyPersonNumber . "','" . $scheduleDate . "',
+        '" . $scheduleTime . "','" . $sbiTicketId . "','" . $port . "','" . $switch . "','" . $primaryDNS . "','" . $alternateDNS . "')";
+
+if (mysqli_query($con, $sql)) {
+    echo json_encode(202);
+    installationProceed($id, $atmid, '');
+}
 
 
 ?>

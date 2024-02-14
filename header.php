@@ -26,7 +26,7 @@ if (!function_exists('verifyToken')) {
 if (verifyToken($token) != 1 || $token == 'NA') {
 
   ob_start();
-  header('Location: /corona/pages/auth/login.php');
+  header('Location: /pages/auth/login.php');
   exit;
 }
 ?>
@@ -37,35 +37,60 @@ if (verifyToken($token) != 1 || $token == 'NA') {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Corona Admin</title>
-  <!-- plugins:css -->
+  <title> Clarity </title>
   <link rel="stylesheet"
-    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/vendors/css/vendor.bundle.base.css">
+    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/vendors/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/vendors/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet"
-    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/vendors/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet"
-    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/vendors/owl-carousel-2/owl.carousel.min.css">
   <link rel="stylesheet"
-    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
-  <!-- End plugin css for this page -->
+    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    
+
+    <!-- End plugin css for this page -->
+  
   <!-- inject:css -->
   <!-- endinject -->
   <!-- Layout styles -->
-  <link rel="stylesheet" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/css/style.css">
+  <link rel="stylesheet" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/css/style.css">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/images/favicon.png" />
+  <link rel="shortcut icon" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/assets/images/adv_fav.png" />
+  
+    <link rel="icon" href="http://clarity.advantagesb.com/assets/images/adv_fav.png" type="image/png">
+    <link rel="shortcut icon" href="http://clarity.advantagesb.com/assets/images/adv_fav.png" type="image/png">
+    
+    
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <link rel="stylesheet" type="text/css" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/datatable/dataTables.bootstrap.css">
+  <link rel="stylesheet" type="text/css"
+    href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/datatable/dataTables.bootstrap.css">
 
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+
+  <style>
+    
+    body {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    
+  </style>
 </head>
 
-<body>
+<body style="zoom:90%;">
   <div class="container-scroller">
     <?php include('nav.php'); ?>
     <!-- partial -->
@@ -73,8 +98,8 @@ if (verifyToken($token) != 1 || $token == 'NA') {
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo-mini" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/index.php"><img
-              src="<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="<? $_SERVER["DOCUMENT_ROOT"]; ?>/index.php">
+        </a>
         </div>
         <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -90,13 +115,14 @@ if (verifyToken($token) != 1 || $token == 'NA') {
                 </form> -->
               <!-- header.php -->
               <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search" id="searchForm">
-                <input type="text" name="atmid" class="form-control" placeholder="Search ATMID" id="atmSearchInput" style="width:100%;">
+                <input type="text" name="atmid" class="form-control" placeholder="Search ATMID" id="atmSearchInput"
+                  style="width:100%;">
               </form>
 
             </li>
           </ul>
           <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item dropdown d-none d-lg-block">
+            <!-- <li class="nav-item dropdown d-none d-lg-block">
               <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown"
                 aria-expanded="false" href="#">+ Create New Project</a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
@@ -138,7 +164,7 @@ if (verifyToken($token) != 1 || $token == 'NA') {
                 <div class="dropdown-divider"></div>
                 <p class="p-3 mb-0 text-center">See all projects</p>
               </div>
-            </li>
+            </li> -->
             <!-- <li class="nav-item nav-settings d-none d-lg-block">
               <a class="nav-link" href="#">
                 <i class="mdi mdi-view-grid"></i>
@@ -239,8 +265,10 @@ if (verifyToken($token) != 1 || $token == 'NA') {
             <li class="nav-item dropdown">
               <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                 <div class="navbar-profile">
-                  <p class="mb-0 d-none d-sm-block navbar-profile-name">
-                    <?= ucwords($username); ?>
+                  <p class="mb-0 d-none d-sm-block navbar-profile-name ">
+                    <strong>
+                        <?= ucwords($username); ?>
+                    </strong>
                   </p>
                   <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                 </div>
@@ -282,7 +310,7 @@ if (verifyToken($token) != 1 || $token == 'NA') {
         </div>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+      <div class="main-panel" style="zoom: 90%;">
         <div class="content-wrapper">
 
 
@@ -291,7 +319,7 @@ if (verifyToken($token) != 1 || $token == 'NA') {
             function unlockIPs() {
               $.ajax({
                 type: 'GET',
-                url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/unLockIPs.php',
+                url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/unLockIPs.php',
                 success: function (response) { },
                 error: function (xhr, status, error) {
                   console.error(xhr.responseText);
@@ -330,57 +358,57 @@ if (verifyToken($token) != 1 || $token == 'NA') {
 
 
           <!-- At the end of your HTML file -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var searchForm = document.getElementById('searchForm');
-        var searchInput = document.getElementById('atmSearchInput');
-        var atmhistoryContent = document.getElementById('atmhistoryContent');
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              var searchForm = document.getElementById('searchForm');
+              var searchInput = document.getElementById('atmSearchInput');
+              var atmhistoryContent = document.getElementById('atmhistoryContent');
 
-        searchForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+              searchForm.addEventListener('submit', function (event) {
+                event.preventDefault();
 
-            // Fetch data using AJAX
-            $.ajax({
-                url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/getatmHistory.php',
-                type: 'GET',
-                data: { atmid: searchInput.value },
-                success: function (response) {
+                // Fetch data using AJAX
+                $.ajax({
+                  url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/getatmHistory.php',
+                  type: 'GET',
+                  data: { atmid: searchInput.value },
+                  success: function (response) {
                     // Update #atmhistoryContent with the response
                     atmhistoryContent.innerHTML = response;
 
                     // Trigger modal on form submission
                     var myModal = new bootstrap.Modal(document.getElementById('atmmodal'));
                     myModal.show();
-                },
-                error: function () {
+                  },
+                  error: function () {
                     console.error('Error fetching ATM history data.');
-                }
-            });
-        });
+                  }
+                });
+              });
 
-        searchInput.addEventListener('keyup', function (event) {
-            // Check if Enter key is pressed (keyCode 13)
-            if (event.key === 'Enter') {
-                event.preventDefault();
+              searchInput.addEventListener('keyup', function (event) {
+                // Check if Enter key is pressed (keyCode 13)
+                if (event.key === 'Enter') {
+                  event.preventDefault();
 
-                // Fetch data using AJAX
-                $.ajax({
-                    url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/corona/getatmHistory.php',
+                  // Fetch data using AJAX
+                  $.ajax({
+                    url: '<? $_SERVER["DOCUMENT_ROOT"]; ?>/getatmHistory.php',
                     type: 'GET',
                     data: { atmid: searchInput.value },
                     success: function (response) {
-                        // Update #atmhistoryContent with the response
-                        atmhistoryContent.innerHTML = response;
+                      // Update #atmhistoryContent with the response
+                      atmhistoryContent.innerHTML = response;
 
-                        // Trigger modal on Enter key press
-                        var myModal = new bootstrap.Modal(document.getElementById('atmmodal'));
-                        myModal.show();
+                      // Trigger modal on Enter key press
+                      var myModal = new bootstrap.Modal(document.getElementById('atmmodal'));
+                      myModal.show();
                     },
                     error: function () {
-                        console.error('Error fetching ATM history data.');
+                      console.error('Error fetching ATM history data.');
                     }
-                });
-            }
-        });
-    });
-</script>
+                  });
+                }
+              });
+            });
+          </script>

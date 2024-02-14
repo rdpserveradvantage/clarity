@@ -28,7 +28,7 @@
 
                 ?>
 
-                <h5>Receiver's Details</h5>
+                <h3>Receiver's Details</h3>
 
                 <hr />
                 <form id="vendorForm">
@@ -44,55 +44,36 @@
 
                     <div class="row">
 
-
-                        <div class="col-sm-12">
-                            <label for="Vendor">Contractor</label>
-                            <select name="vendorId" id="contractor" class="form-control" required>
-                                <option>--Select Contractor</option>
-
-                                <?
-                                $vendorSql = mysqli_query($con, "select * from vendor where status=1");
-                                while ($vendorSqlResult = mysqli_fetch_assoc($vendorSql)) {
-                                    ?>
-                                    <option value="<?= $vendorSqlResult['id']; ?>">
-                                        <?= $vendorSqlResult['vendorName']; ?>
-                                    </option>
-
-                                <?
-                                }
-                                ?>
-                            </select>
+                        <input type="hidden" id="vendorId" name="vendorId" value="<?php echo $_GLOBAL_VENDOR_ID; ?>" />
 
 
-                        </div>
-
-
-                        <div class="col-sm-6">
+                        <div class="grid-margin col-sm-6">
                             <label>Contact Person Name</label>
                             <select class="form-control" name="contactPersonName" id="contactPersonName" required>
 
                             </select>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="grid-margin col-sm-6">
                             <label>Contact Person Number</label>
                             <input type="text" name="contactPersonNumber" id="contactPersonNumber" class="form-control"
                                 required>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="grid-margin col-sm-12">
                             <label>Address</label>
                             <textarea name="address" class="form-control" id="address" required></textarea>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="grid-margin col-sm-6">
                             <label>POD</label>
                             <input type="text" name="POD" class="form-control" required />
                         </div>
-                        <div class="col-sm-6">
+                        <div class="grid-margin col-sm-6">
                             <label>Courier</label>
                             <input type="text" name="courier" class="form-control" required />
                         </div>
                         <div class="col-sm-12">
                             <label>Any Other Remark</label>
-                            <input type="text" name="remark" class="form-control" />
+                            <textarea name="remark" id="" class="form-control" cols="30" rows="10" style="    height: auto;"></textarea>
+                            <!-- <input type="text" name="remark" class="form-control" /> -->
                         </div>
                     </div>
                     <div class="row">
@@ -106,9 +87,9 @@
 
                 <script>
 
-                    $(document).on('change', '#contractor', function () {
+                    $(document).ready(function () {
 
-                        var contractor = $(this).val();
+                        var contractor = $("#vendorId").val();
 
                         $("#contactPersonName").html('');
                         $.ajax({

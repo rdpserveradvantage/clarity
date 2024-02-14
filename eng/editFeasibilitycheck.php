@@ -176,7 +176,7 @@
                     $isVendor = $row['isVendor'];
                     $atm_id = $row['atmid'];
 
-                    $baseurl = 'http://clarity.advantagesb.com/corona/API/';
+                    $baseurl = 'http://clarity.advantagesb.com/API/';
 
                 }
             }

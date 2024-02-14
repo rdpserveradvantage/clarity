@@ -7,14 +7,14 @@ $ADVANTAGE_level = $_SESSION['ADVANTAGE_level'];
 if($ADVANTAGE_level==3){
     ?>
 <script>
-    window.location.href="/corona/inventory/eng_materialRecived.php";
+    window.location.href="/inventory/eng_materialRecived.php";
 </script>
     <?
 }
 else if($isVendor==1){
     ?>
 <script>
-    window.location.href="/corona/inventory/vendor_materialRecived.php";
+    window.location.href="/inventory/vendor_materialRecived.php";
 </script>
     <?
 }
