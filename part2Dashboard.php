@@ -83,6 +83,8 @@
                                 }
                             }
                             ?>
+
+                            <a class="btn btn-primary" href="./installation/pendingInstallation.php">View All Site</a>
                         </div>
                     </div>
                 </div>

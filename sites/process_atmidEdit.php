@@ -9,18 +9,18 @@ $activity = $_REQUEST['activity'];
 $customer = $_REQUEST['customer'];
 $bank = $_REQUEST['bank'];
 $atmid = $_REQUEST['atmid'];
-$address = $_REQUEST['address'];
+$address = htmlspecialchars($_REQUEST['address']);
 $city = $_REQUEST['city'];
 $state = $_REQUEST['state'];
 $zone = $_REQUEST['zone'];
 $LHO = $_REQUEST['LHO'];
-$LHO_Contact_Person = $_REQUEST['LHO_Contact_Person'];
+$LHO_Contact_Person = htmlspecialchars($_REQUEST['LHO_Contact_Person']);
 $LHO_Contact_Person_No = $_REQUEST['LHO_Contact_Person_No'];
 $LHO_Contact_Person_email = $_REQUEST['LHO_Contact_Person_email'];
 $LHO_Adv_Person = $_REQUEST['LHO_Adv_Person'];
 $LHO_Adv_Contact = $_REQUEST['LHO_Adv_Contact'];
 $LHO_Adv_email = $_REQUEST['LHO_Adv_email'];
-$Project_Coordinator_Name = $_REQUEST['Project_Coordinator_Name'];
+$Project_Coordinator_Name = htmlspecialchars($_REQUEST['Project_Coordinator_Name']);
 $Project_Coordinator_No = $_REQUEST['Project_Coordinator_No'];
 $Project_Coordinator_email = $_REQUEST['Project_Coordinator_email'];
 $Customer_SLA = $_REQUEST['Customer_SLA'];
@@ -58,6 +58,7 @@ subnetIP = '".$subnetIP."' where id='".$siteid."'";
 
 if(mysqli_query($con,$sql)){
     echo 'Updated Successfully !' ; 
+    echo '<a href="./sitestest.php">View Sites</a>' ; 
 }
                                     
                                     ?>

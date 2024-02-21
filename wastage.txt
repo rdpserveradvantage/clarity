@@ -18,7 +18,7 @@ Site Status LHO Wise :
 show live sites
 
 Installation Calls With Most Pending Time
- give link to show all pending sites
+give link to show all pending sites
 
  feasibilityData.php 
  date range

@@ -160,7 +160,7 @@
                     $end_window = min($start_window + $window_size - 1, $total_pages);
                     $sql_query = "$atm_sql LIMIT $offset, $page_size";
 
-
+// echo $sql_query ; 
 
                     ?>
 
@@ -236,7 +236,7 @@
                                             <td>{$atmIP}</td>
                                             <td>{$created_at}</td>
                                             <td>{$created_by}</td>
-                                            <td><a href='#' data-toggle='modal' data-target='#unbindModal' data-id='{$id}'>Unbind</a></td>
+                                            <td><a href='#' data-bs-toggle='modal' data-bs-target='#unbindModal' data-id='{$id}'>Unbind</a></td>
 
                                         </tr>";
 
@@ -307,7 +307,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="unbindModalLabel">Unbind Confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -316,7 +316,7 @@
                 <input type="hidden" id="unbindItemId">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-danger" onclick="confirmUnbind()">Unbind</button>
             </div>
         </div>
@@ -327,7 +327,7 @@
 
 <script>
     
-    $(document).on("click", "a[data-target='#unbindModal']", function () {
+    $(document).on("click", "a[data-bs-target='#unbindModal']", function () {
         var id = $(this).data('id');
         document.getElementById("unbindItemId").value = id;
     });

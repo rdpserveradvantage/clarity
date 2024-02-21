@@ -99,6 +99,7 @@
                                                 <th>Date</th>
                                                 <th>Dispatch</th>
                                                 <th>Goods Return</th>
+                                                <th>Address</th>
                                             </tr>
                                         </thead>
                                         <tbody>";
@@ -122,6 +123,11 @@
                         $remark = $sql_result['remark'];
                         $date = $sql_result['created_at'];
                         $isDelivered = $sql_result['isDelivered'];
+
+
+
+                        $siteaddress = mysqli_fetch_assoc(mysqli_query($con, "select address from sites where atmid='" . $atmid . "'"))['address'];
+
 
 
 
@@ -216,6 +222,11 @@
                                         <td></td>
                                         ";
                         }
+
+                        echo '<td>
+                        ' . $siteaddress . '
+                        </td>
+                        ';
 
 
 

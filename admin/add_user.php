@@ -84,7 +84,7 @@ if ($isVendor == 1) {
 
 <button type="button" class="btn btn-outline-secondary btn-md" data-bs-toggle="modal" data-bs-target="#adduser"
     data-act="add">
-    <i class="mdi mdi-account-plus"></i> &nbsp; Add
+    <i class="mdi mdi-account-plus"></i> &nbsp; Create New User
 </button>
 
 <br />
@@ -240,18 +240,21 @@ if ($isVendor == 1) {
 
                                 <div class="col-sm-12 form-group">
                                     <label>Email : *</label> <span id="emailvalidationmsg"></span>
-                                    <input type="email" id="emailid" name="uname" class="form-control" required>
+                                    <input type="email" id="emailid" name="uname" class="form-control" required autocomplete="username">
+
                                 </div>
 
                                 <div class="col-sm-6 form-group">
                                     <label>Password : *</label>
-                                    <input type="password" name="pwd" id="pwd" class="form-control" required>
+                                    <input type="password" name="pwd" id="pwd" class="form-control" required autocomplete="new-password">
+
                                 </div>
 
 
                                 <div class="col-sm-6 form-group">
                                     <label>Confirm Password : *</label>
-                                    <input type="password" name="cpwd" id="cpwd" class="form-control" required>
+                                    <input type="password" name="cpwd" id="cpwd" class="form-control" required autocomplete="new-password">
+
                                 </div>
 
                                 <div class="col-sm-6 form-group">
@@ -487,9 +490,10 @@ if ($isVendor == 1) {
                                 window.location.reload();
                             });
                     } else {
+                        console.log(response)
                         Swal.fire('Error', 'Failed to Update user. Please try again !', 'error')
                             .then(function () {
-                                window.location.href = "doneConfigured.php";
+                                // window.location.href = "./add_user.php";
                             });
 
                     }
@@ -528,6 +532,9 @@ if ($isVendor == 1) {
 
 
 </script>
+
+<!--<script src="../assets/vendors/js/vendor.bundle.base.js"></script>-->
+
 
 <? include('../footer.php'); ?>
 <script>
@@ -609,8 +616,6 @@ if ($isVendor == 1) {
     });
 </script>
 
-
-<script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
 
 
 

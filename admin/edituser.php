@@ -8,12 +8,16 @@ $name = $sql_result['name'];
 $uname = $sql_result['uname'];
 $pwd = $sql_result['pwd'];
 $user_permission = $sql_result['permission'];
+$servicePermission = $sql_result['servicePermission'];
+
 $level = $sql_result['level'];
 $contact = $sql_result['contact'];
 $vendorid = $sql_result['vendorid'];
 
 
 $user_permission = explode (",", $user_permission);
+
+$servicePermission = explode (",", $servicePermission);
 
 
 ?>
@@ -141,7 +145,7 @@ $user_permission = explode (",", $user_permission);
                                 ?>
                                 <li>
                                     <input class="submenu" type="checkbox" data-main_id="<?php echo $main_id ?>"
-                                        name="sub_menu_clarify[]" value="<?php echo $sub_id; ?>"  <? if(in_array($sub_id,$user_permission)){ echo 'checked' ; } ?>>
+                                        name="sub_menu_clarify[]" value="<?php echo $sub_id; ?>"  <? if(in_array($sub_id,$servicePermission)){ echo 'checked' ; } ?>>
                                     <?php echo $sub_sql_result['sub_menu']; ?>
                                 </li>
                             <?php } ?>

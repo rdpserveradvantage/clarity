@@ -154,16 +154,18 @@ if ($assignedLho) {
 
                             } else {
 
-                                $sql = "insert into sites(activity,customer,bank,atmid,atmid2,atmid3,address,city,state,zone,LHO,LHO_Contact_Person,LHO_Contact_Person_No,
+                                 $sql = "insert into sites(activity,customer,bank,atmid,atmid2,atmid3,address,city,state,zone,LHO,LHO_Contact_Person,LHO_Contact_Person_No,
                     LHO_Contact_Person_email,LHO_Adv_Person,LHO_Adv_Contact,LHO_Adv_email,Project_Coordinator_Name,Project_Coordinator_No,Project_Coordinator_email,
                     Customer_SLA,Our_SLA,Vendor,Cash_Management,CRA_VENDOR,ID_on_Make,Model,SiteType,PopulationGroup,XPNET_RemoteAddress,CONNECTIVITY,Connectivity_Type,
                     Site_data_Received_for_Feasiblity_date,status,created_at,created_by,po,po_date,latitude,longitude) values('" . $activity . "','" . $customer . "','" . $bank . "','" . $atmid . "','" . $atmid2 . "','" . $atmid3 . "',
-                    '" . $address . "','" . $city . "','" . $state . "','" . $zone . "','" . $LHO . "','" . $LHO_Contact_Person . "','" . $LHO_Contact_Person_No . "','" . $LHO_Contact_Person_email . "',
-                    '" . $LHO_Adv_Person . "','" . $LHO_Adv_Contact . "','" . $LHO_Adv_email . "','" . $Project_Coordinator_Name . "','" . $Project_Coordinator_No . "','" . $Project_Coordinator_email . "',
+                    '" . htmlspecialchars($address) . "','" . $city . "','" . $state . "','" . $zone . "','" . $LHO . "','" . htmlspecialchars($LHO_Contact_Person) . "','" . $LHO_Contact_Person_No . "','" . $LHO_Contact_Person_email . "',
+                    '" . htmlspecialchars($LHO_Adv_Person) . "','" . $LHO_Adv_Contact . "','" . $LHO_Adv_email . "','" . htmlspecialchars($Project_Coordinator_Name) . "','" . $Project_Coordinator_No . "','" . $Project_Coordinator_email . "',
                     '" . $Customer_SLA . "','" . $Our_SLA . "','" . $Vendor . "','" . $Cash_Management . "','" . $CRA_VENDOR . "','" . $ID_on_Make . "','" . $Model . "','" . $SiteType . "','" . $PopulationGroup . "',
                     '" . $XPNET_RemoteAddress . "','" . $CONNECTIVITY . "','" . $Connectivity_Type . "','" . $Site_data_Received_for_Feasiblity_date . "',1,'" . $datetime . "','" . $userid . "'
                     ,'" . $PO . "','" . $PO_date . "','" . $latitude . "','" . $longitude . "'
                     )";
+
+                    // echo '<br />';
 
                                 mysqli_query($con, $sql);
                                 $siteId = $con->insert_id;

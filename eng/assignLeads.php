@@ -1,4 +1,11 @@
 <? include('../header.php');
+
+
+if($ADVANTAGE_level==3){
+
+
+
+
 $statement = "select distinct(siteid) as siteid from delegation where engineerId='" . $userid . "' and status=1 order by id desc";
 $sql = mysqli_query($con, $statement);
 while ($sql_result = mysqli_fetch_assoc($sql)) {
@@ -325,6 +332,12 @@ while ($sql_result = mysqli_fetch_assoc($sql)) {
 
 <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
 
+
+<? } 
+else{
+  echo "You Don't have permission to access this page !" ; 
+}
+?>
 <? include('../footer.php'); ?>
 
 
@@ -348,3 +361,4 @@ while ($sql_result = mysqli_fetch_assoc($sql)) {
 <script src="../datatable/buttons.html5.min.js"></script>
 <script src="../datatable/buttons.print.min.js"></script>
 <script src="../datatable/jquery-datatable.js"></script>
+

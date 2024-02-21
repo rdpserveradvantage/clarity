@@ -322,7 +322,7 @@ if($isVendor==1){
                             <hr />
                             <ul style="overflow: scroll; max-height: 500px;">
                                 <?php
-                                $statusColumn = 'status';
+                                $statusColumn = 'vendorStatus';
                                 $mainsql = mysqli_query($con, "select * from main_menu where $statusColumn=1");
                                 while ($mainsql_result = mysqli_fetch_assoc($mainsql)) {
                                     $main_id = $mainsql_result['id'];

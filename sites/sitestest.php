@@ -469,8 +469,7 @@ $sql_query = "$atm_sql LIMIT $offset, $page_size";
                                 <th>
                                     <?php echo $counter; ?>
                                 </th>
-                                <td class="strong"> <a href="atmEdit.php?id=<? echo $id; ?>&atmid=<? echo $atmid; ?>"><i
-                                            class="mdi mdi-tooltip-edit"></i></a> |
+                                <td class="strong"> 
                                     <? echo $atmid; ?>
                                 </td>
                                 <td class="<? if ($islho == 1) {

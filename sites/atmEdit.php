@@ -63,159 +63,159 @@ $atmid = $_REQUEST['atmid'];
                                 <form action="process_atmidEdit.php" method="POST">
                                     <input type="hidden" name="siteid" value="<? echo $siteid; ?>" />
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">activity</label>
                                             <input type="text" name="activity" value="<?= $activity; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">customer</label>
                                             <input type="text" name="customer" value="<?= $customer; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">bank</label>
                                             <input type="text" name="bank" value="<?= $bank; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">atmid</label>
-                                            <input type="text" name="atmid" value="<?= $atmid; ?>" class="form-control" readonly />
+                                            <input type="text" name="atmid" value="<?= $atmid; ?>" class="form-control"  />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">address</label>
                                             <input type="text" name="address" value="<?= $address; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">city</label>
                                             <input type="text" name="city" value="<?= $city; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">state</label>
                                             <input type="text" name="state" value="<?= $state; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">zone</label>
                                             <input type="text" name="zone" value="<?= $zone; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">LHO</label>
                                             <input type="text" name="LHO" value="<?= $LHO; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">LHO_Contact_Person</label>
                                             <input type="text" name="LHO_Contact_Person" value="<?= $LHO_Contact_Person; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">LHO_Contact_Person_No</label>
                                             <input type="text" name="LHO_Contact_Person_No" value="<?= $LHO_Contact_Person_No; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">LHO_Contact_Person_email</label>
                                             <input type="text" name="LHO_Contact_Person_email" value="<?= $LHO_Contact_Person_email; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">LHO_Adv_Person</label>
                                             <input type="text" name="LHO_Adv_Person" value="<?= $LHO_Adv_Person; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">LHO_Adv_Contact</label>
                                             <input type="text" name="LHO_Adv_Contact" value="<?= $LHO_Adv_Contact; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">LHO_Adv_email</label>
                                             <input type="text" name="LHO_Adv_email" value="<?= $LHO_Adv_email; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Project_Coordinator_Name</label>
                                             <input type="text" name="Project_Coordinator_Name" value="<?= $Project_Coordinator_Name; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Project_Coordinator_No</label>
                                             <input type="text" name="Project_Coordinator_No" value="<?= $Project_Coordinator_No; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Project_Coordinator_email</label>
                                             <input type="text" name="Project_Coordinator_email" value="<?= $Project_Coordinator_email; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Customer_SLA</label>
                                             <input type="text" name="Customer_SLA" value="<?= $Customer_SLA; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Our_SLA</label>
                                             <input type="text" name="Our_SLA" value="<?= $Our_SLA; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Vendor</label>
                                             <input type="text" name="Vendor" value="<?= $Vendor; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Cash_Management</label>
                                             <input type="text" name="Cash_Management" value="<?= $Cash_Management; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">CRA_VENDOR</label>
                                             <input type="text" name="CRA_VENDOR" value="<?= $CRA_VENDOR; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">ID_on_Make</label>
                                             <input type="text" name="ID_on_Make" value="<?= $ID_on_Make; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Model</label>
                                             <input type="text" name="Model" value="<?= $Model; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">SiteType</label>
                                             <input type="text" name="SiteType" value="<?= $SiteType; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">PopulationGroup</label>
                                             <input type="text" name="PopulationGroup" value="<?= $PopulationGroup; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">XPNET_RemoteAddress</label>
                                             <input type="text" name="XPNET_RemoteAddress" value="<?= $XPNET_RemoteAddress; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">CONNECTIVITY</label>
                                             <input type="text" name="CONNECTIVITY" value="<?= $CONNECTIVITY; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">Connectivity_Type</label>
                                             <input type="text" name="Connectivity_Type" value="<?= $Connectivity_Type; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">po</label>
                                             <input type="text" name="po" value="<?= $po; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">po_date</label>
                                             <input type="text" name="po_date" value="<?= $po_date; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">latitude</label>
                                             <input type="text" name="latitude" value="<?= $latitude; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">longitude</label>
                                             <input type="text" name="longitude" value="<?= $longitude; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">verificationStatus</label>
                                             <input type="text" name="verificationStatus" value="<?= $verificationStatus; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">networkIP</label>
                                             <input type="text" name="networkIP" value="<?= $networkIP; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">routerIP</label>
                                             <input type="text" name="routerIP" value="<?= $routerIP; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">atmIP</label>
                                             <input type="text" name="atmIP" value="<?= $atmIP; ?>" class="form-control" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="grid-margin col-sm-3">
                                             <label for="">subnetIP</label>
                                             <input type="text" name="subnetIP" value="<?= $subnetIP; ?>" class="form-control" />
                                         </div>

@@ -49,7 +49,7 @@ if(isset($_POST["checkedIds"])){
                 ?>
                 <h5> Delegate : To Contractor</h5>
                 
-                <span style="color:yellow">
+                <span>
                     <?php echo implode(' , ', $all_atmid) . ' '; ?>
                 </span>
 

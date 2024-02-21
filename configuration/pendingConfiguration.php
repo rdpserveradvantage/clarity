@@ -237,7 +237,7 @@
                                             <td>{$updatedBy}</td>
                                             <td>{$updated_at}</td>
 
-                                            <td><a href='#' data-toggle='modal' data-target='#unbindModal' class='{$activityClass}' data-id='{$id}'>Unbind</a></td>
+                                            <td><a href='#' data-bs-toggle='modal' data-bs-target='#unbindModal' class='{$activityClass}' data-id='{$id}'>Unbind</a></td>
 
                                         </tr>";
 
@@ -344,11 +344,73 @@
 
 
 
+    <div class="modal fade" id="unbindModal" tabindex="-1" role="dialog" aria-labelledby="unbindModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="unbindModalLabel">Unbind Confirmation</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to unbind this item?</p>
+                <input type="hidden" id="unbindItemId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" onclick="confirmUnbind()">Unbind</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
     <script>
+
+$(document).on("click", "a[data-bs-target='#unbindModal']", function () {
+        var id = $(this).data('id');
+        document.getElementById("unbindItemId").value = id;
+    });
+
+
+    function confirmUnbind() {
+        var idToUnbind = document.getElementById("unbindItemId").value;
+        // alert(idToUnbind)
+        $.ajax({
+            type: "POST",
+            url: "unbindIP.php",
+            data: { id: idToUnbind },
+            success: function (response) {
+                // console.log(response);
+                if (response == '1') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Unbind Success !'
+                    }).then(function () {
+                        window.location.href = 'pendingConfiguration.php';
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Unbind Error !'
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+        $('#unbindModal').modal('hide');
+    }
+
+
+
         $(document).ready(function () {
 
             $("#serial_no").on('input', function () {
